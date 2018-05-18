@@ -1,0 +1,104 @@
+@import "./_common.scss";
+@import "./_config.scss";
+@import "./_mixin.scss";
+.wrap {
+    font-size: pxTorem(18px);
+}
+
+header,
+footer {
+    width: 100%;
+    height: pxTorem(45px);
+    background: $header-bg;
+    color: $black-color;
+    line-height: pxTorem(45px);
+}
+
+//首页头部
+header {
+    position: relative;
+    padding: 0 pxTorem(45px);
+    display: flex;
+    .head_inner {
+        height: 100%;
+        width: pxTorem(180px);
+        margin: 0 auto;
+        display: flex;
+        position: relative;
+        span {
+            line-height: pxTorem(45px);
+            width: 50%;
+            text-align: center;
+        }
+        span.active {
+            color: $tab-active-color; //头部活跃状态
+        }
+        .line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: #ccc;
+            transition: left 1s;
+        }
+        b.move {
+            left: 50%;
+        }
+        .line:after {
+            content: "";
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: $header-line-bg;
+        }
+    }
+    .head_icon {
+        height: 100%;
+        width: pxTorem(45px);
+        position: absolute;
+        top: 0;
+    }
+    .icon_left {
+        left: 0;
+        @include bg("../image/icon-sign.png");
+        background-size: pxTorem(22px);
+    }
+    .icon_right {
+        right: 0;
+        @include bg("../image/icon-person.png");
+        background-size: pxTorem(22px);
+    }
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.index_scroll,
+.shu_c,
+.shu_j {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.shu_c,
+.shu_j {
+    overflow: auto;
+}
+
+.shu_c_inner {
+    height: 2000px;
+    background: orange;
+}
+
+.shu_j_inner {
+    height: 200px;
+    background: pink;
+}

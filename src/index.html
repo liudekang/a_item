@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./js/libs/swiper-4.1.6/css/swiper.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script>
+        // document.documentElement.style.fontSize = window.innerWidth / 750 * 100 + "px";
+    </script>
+</head>
+
+<body>
+    <div id="root">
+
+        <!-- 首页的内容 -->
+        <div class="wrap">
+            <!-- 首页头部 -->
+            <header>
+                <div class="icon_left head_icon"></div>
+                <div class="head_inner">
+                    <span class="active">书城</span>
+                    <span>暑假</span>
+                    <b class="line"></b>
+                </div>
+                <div class="icon_right head_icon"></div>
+            </header>
+            <!-- 首页主体 -->
+            <main>
+                <div class="swiper-container index_scroll">
+                    <div class="swiper-wrapper ban">
+                        <div class="swiper-slide shu_c">
+                            <div class="shu_c_inner">
+                                书城
+                            </div>
+                        </div>
+                        <div class="swiper-slide shu_j">
+                            <div class="shu_j_inner">
+                                书城0002
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="sect" data-bef="下拉刷新" data-aft="上拉加载">
+                <div class="swiper-container parent">
+                    <div class="swiper-wrapper ban">
+                    </div>
+                    <div class="swiper-pagination page"></div>
+                    <div class="swiper-scrollbar bar"></div>
+                </div>
+                <div class="inner">
+                    <div>
+                        <h3 id="tit">重磅热播</h3>
+                        <div class="in">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+            </main>
+            <footer>脚本信息</footer>
+        </div>
+    </div>
+    <script id="swp" type="text/x-handlebars-template">
+        {{#each data}}
+        <div class="swiper-slide"><img src="./img/{{url}}" alt=""></div>
+        {{/each}}
+    </script>
+    <script id="list" type="text/x-handlebars-template">
+        {{#each list}}
+        <dl>
+            <dt><img src="./img/{{img}}" alt=""></dt>
+            <dd>
+                <p>{{tlt}}</p>
+            </dd>
+        </dl>
+        {{/each}}
+    </script>
+    <!-- <script src="js/libs/require.js" async="true" defer data-main="js/main"></script> -->
+    <script src="./js/lib/require.js"></script>
+    <script>
+        require(["./js/main"], function() {
+            require(["app/index"]);
+        })
+    </script>
+</body>
+
+</html>
