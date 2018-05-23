@@ -1,0 +1,147 @@
+<!-- 渲染首页轮播数据 -->
+<script id="index_swp" type="text/x-handlebars-template">
+    {{#each data}} {{#if ad_pic_url}}
+    <div class="swiper-slide"><img src="{{ad_pic_url}}" alt=""></div>
+    {{/if}} {{/each}}
+</script>
+<!-- 渲染本周最火章节——列表数据 -->
+<script id="day_hot_list" type="text/x-handlebars-template">
+    {{#each data}}
+    <li>
+        <dl>
+            <dt><img src="{{cover}}" alt=""></dt>
+            <dd>{{title}}</dd>
+        </dl>
+    </li>
+    {{/each}}
+</script>
+<!-- 渲染重磅推荐章节——列表数据 -->
+<script id="heavy_list_list" type="text/x-handlebars-template">
+    {{#each data}} {{#if (limit @index)}}{{#if (first_list @index)}}
+    <dl class="detail_list first_detail_icon">
+        <dt>
+            <img src="{{cover}}" alt="">
+            {{#if finish}}
+                <strong>完结</strong>
+            {{else}}
+            <strong>连载</strong>
+            {{/if}}
+            </dt>
+        <dd>
+            <h5>{{title}}</h5>
+            <span>{{authors}}</span>
+            <p>{{summary}}</p>
+            <h6>{{#each tags}} {{#if (limit_little @index)}}
+                <b>{{this}}</b> {{/if}}{{/each}}
+            </h6>
+        </dd>
+    </dl>
+    {{else}}
+    <dl class="easy_list easy_list_icon">
+        <dt data-id="0{{addIndex @index}}">{{title}}</dt>
+        <dd>{{authors}}</dd>
+    </dl>{{/if}} {{/if}} {{/each}}
+</script>
+<!-- 渲染女生最爱——模块章节——列表数据 -->
+<script id="girl_data_list" type="text/x-handlebars-template">
+    {{#each data}} {{#if (limit @index)}}
+    <dl class="detail_list">
+        <dt>
+            <img src="{{cover}}" alt="">
+            {{#if finish}}
+                <strong>完结</strong>
+            {{else}}
+            <strong>连载</strong>
+            {{/if}}
+            </dt>
+        <dd>
+            <h5>{{title}}</h5>
+            <span>{{authors}}</span>
+            <p>{{summary}}</p>
+            <h6>{{#each tags}} {{#if (limit_little @index)}}
+                <b>{{this}}</b> {{/if}}{{/each}}
+            </h6>
+        </dd>
+    </dl>{{/if}} {{/each}}
+</script>
+<!-- 渲染男生最爱——模块章节——列表数据 -->
+<script id="boy_data_list" type="text/x-handlebars-template">
+    {{#each data}} {{#if (limit @index)}}
+    <dl class="detail_list">
+        <dt>
+            <img src="{{cover}}" alt="">
+            {{#if finish}}
+                <strong>完结</strong>
+            {{else}}
+            <strong>连载</strong>
+            {{/if}}
+            </dt>
+        <dd>
+            <h5>{{title}}</h5>
+            <span>{{authors}}</span>
+            <p>{{summary}}</p>
+            <h6>{{#each tags}} {{#if (limit_little @index)}}
+                <b>{{this}}</b> {{/if}}{{/each}}
+            </h6>
+        </dd>
+    </dl>{{/if}} {{/each}}
+</script>
+<!-- 渲染限时免费章节——列表数据 -->
+<script id="tody_free_list" type="text/x-handlebars-template">
+    {{#each data}}
+    <li>
+        <dl>
+            <dt><img src="{{this.data.book_cover}}" alt=""></dt>
+            <dd>{{this.ad_name}}</dd>
+        </dl>
+    </li>
+    {{/each}}
+</script>
+
+
+<!-- 渲染精选专题章节——列表数据 -->
+<script id="best_data_list" type="text/x-handlebars-template">
+    {{#each data}}
+    <a href="javascript:;"><img src="{{ad_pic_url}}" alt=""></a>
+    {{/each}}
+</script>
+
+<!-- 渲染瀑布流——列表数据 -->
+<script id="falls_data_list" type="text/x-handlebars-template">
+    {{#each items}}
+    <dl class="detail_list">
+        <dt>
+        <img src="{{cover}}" alt="">
+        {{#if finish}}
+            <strong>完结</strong>
+        {{else}}
+        <strong>连载</strong>
+        {{/if}}
+        </dt>
+        <dd>
+            <h5>{{title}}</h5>
+            <span>{{authors}}</span>
+            <p>{{summary}}</p>
+            <h6>{{#each tags}} {{#if (limit_little @index)}}
+                <b>{{this}}</b> {{/if}}{{/each}}
+            </h6>
+        </dd>
+    </dl> {{/each}}
+</script>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- 书架——列表数据 -->
+<script id="sj_data" type="text/x-handlebars-template">
+    {{#each items}}
+    <div class="sj_detail_list_wrap">
+        <dl class="sj_detail_list">
+            <dt><img src="{{cover}}" alt=""></dt>
+            <dd>
+                <h5>{{title}}</h5>
+                <span>{{authors}}</span>
+                <p>已读：{{rights}}</p>
+                <h6>最新：{{latest}}</h6>
+            </dd>
+        </dl>
+    </div> {{/each}}
+</script>

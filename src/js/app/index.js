@@ -1,8 +1,10 @@
-// require(["jquery", "headr", "bscroll", "render", "swiper"], function($, Headlebars, bscroll, render, swiper) {
-require(["jquery", "swiper", "bscroll"], function($, swiper, bscroll) {
+require(["jquery", "swiper", "bscroll", "render", "GetSlideDirection", "text!handle_tpl", "text!head_tpl"], function($, swiper, bscroll, render, GetSlideDirection, handle_tpl, head_tpl) {
+    $("body").append(handle_tpl);
+    $("body").append(head_tpl);
     var pagenum = 0;
     //首页的大轮播结构
     var mySwiper = new swiper('.index_scroll', {
+        speed: 300,
         on: {
             slideChangeTransitionStart: function() {
                 $(".head_inner span").eq(this.activeIndex).addClass("active").siblings().removeClass("active");
@@ -15,131 +17,115 @@ require(["jquery", "swiper", "bscroll"], function($, swiper, bscroll) {
         },
     });
     $(".head_inner span").on("click", function() {
-        mySwiper.slideTo($(this).index(), 1000, true);
+        mySwiper.slideTo($(this).index(), 300, true);
         //切换到指定slide，速度为1秒
     });
     //首页书城，书架的bscroll
-    var bscl = new bscroll(".shu_c", {
+    var bcroll_shuc = new bscroll(".shu_c", {
         probeType: 2,
-        click: true
+        click: true,
+        scrollbar: true
+            // wheel: {
+            //     selectedIndex: 0,
+            //     rotate: 25,
+            //     adjustTime: 400
+            // }
     });
-    var bscl = new bscroll(".shu_j", {
-        probeType: 2,
-        click: true
+
+    //获取瀑布流的数据
+    var start = pagenum * 10;
+    $.ajax({
+        // "/api/pb001": pbl01,
+        url: "/random/pbl?start=" + start + "&count=10",
+        dataType: "json",
+        success: function(data) {
+            // console.log("/api/pb001-----data");
+            // console.log(data);
+            //获取瀑布流列表——列表数据
+            render(data, $("#falls_data_list"), $(".falls_list .falls_list_inner"));
+            //获取书架——列表数据
+            render(data, $("#sj_data"), $(".sj_list .sj_list_inner"));
+        }
     });
 
 
-    function req_data() {
-        $.ajax({
-            url: "/api/list",
-            dataType: "json",
-            success: function(data) {
-                console.log(data);
-                // loadscroll(data);
+    var drog_down = "下拉可刷新";
+    var drog_up = "松开以刷新";
+    var drog_height = $(".drag_down").height();
+    bcroll_shuc.on("scroll", function() {
+        // console.log(this.y, this.maxScrollY)
+        // if (this.y < this.maxScrollY - 80) {
+        //     $(".drag_down").addClass("up").children("p").html(drog_up);
+        // } else if (this.y < this.maxScrollY - 20) {
+        //     $(".drag_down").removeClass("up").children("p").html(drog_down);
+        // }
+
+        if (this.y > drog_height * 1.2) {
+            $(".drag_down").addClass("up").children("p").html(drog_up);
+        } else if (this.y > drog_height * 0.6) {
+            $(".drag_down").removeClass("up").children("p").html(drog_down);
+        }
+    });
+    bcroll_shuc.on("scrollEnd", function() {
+        $(".drag_down").removeClass("up").children("p").html(drog_down);
+    });
+    bcroll_shuc.on("touchEnd", function() {
+        // console.log(888);
+        if (bcroll_shuc.y >= 0) {
+            // console.log(1111);
+            if ($(".drag_down").children("p").html() === drog_up) {
+                pagenum++;
+                // console.log(pagenum);
+
+                $(".wrap").html();
+                window.location.reload();
             }
+            // bcroll_shuc.refresh();
+            // window.localStorage.getItem
+        }
+    });
+
+    //获取首页数据
+    $.ajax({
+        url: "/api/home",
+        dataType: "json",
+        success: function(data) {
+            // console.log(data);
+            //获取首页轮播数据
+            render(data.items[0].data, $("#index_swp"), $(".index_banner .index_banner_wrap"));
+            var mySwiper = new swiper('.index_banner_inner', {
+                // direction: 'vertical',
+                loop: true,
+                autoplay: true
+            });
+            //获取本周最火章节——列表数据
+            render(data.items[1].data, $("#day_hot_list"), $(".day_hot .day_hot_list"));
+            //获取重磅推荐列表——列表数据
+            render(data.items[2].data, $("#heavy_list_list"), $(".heavy_list .heavy_list_inner"));
+            //获取女生最爱列表——列表数据
+            render(data.items[3].data, $("#girl_data_list"), $(".girl_list .girl_list_inner"));
+            //获取男生最爱列表——列表数据
+            render(data.items[4].data, $("#boy_data_list"), $(".boy_list .boy_list_inner"));
+            //获取限时免费章节——列表数据
+            render(data.items[5].data, $("#tody_free_list"), $(".tody_free .tody_free_list"));
+            //获取精选专题章节——列表数据
+            render(data.items[6].data, $("#best_data_list"), $(".best_list .best_list_inner"));
+        }
+    });
+    //书架模块——点击切换类型
+    $(".shu_j_btn").on("click", function() {
+        $(this).toggleClass("active");
+        $(".sj_list_inner").toggleClass("sj_easy_list");
+    });
+
+    //书城搜索——点击切换
+    $(".btn_search").on("click", function() {
+        $(".s_get").html("");
+        $(".s_default").show().siblings().hide();
+        $("#root").css({
+            transform: "translate(-100% )"
         });
-    }
-    req_data();
+    });
 
-    // $.ajax({
-    //     url: "/api/swiper",
-    //     dataType: "json",
-    //     success: function(data) {
-    //         // console.log(data);
-    //         render(data, $("#swp"), $(".ban"));
-    //         var mySwiper = new swiper('.parent', {
-    //             // direction: 'vertical',
-    //             loop: true,
-    //             autoplay: true,
-    //             // 如果需要分页器
-    //             pagination: {
-    //                 el: '.page',
-    //             },
-    //             // 如果需要滚动条
-    //             scrollbar: {
-    //                 el: '.bar',
-    //             },
-    //         })
-    //     }
-    // });
 
-    // function req_data() {
-    //     $.ajax({
-    //         url: "/api/list",
-    //         dataType: "json",
-    //         success: function(data) {
-    //             // console.log(data);
-    //             loadscroll(data);
-    //         }
-    //     });
-    // }
-    // req_data();
-
-    // function loadscroll(data) {
-    //     render(data, $("#list"), $(".in"));
-    //     bscl.refresh();
-
-    //     bscl.on("scroll", function() {
-    //         // console.log(this.y, this.maxScrollY)
-    //         if (this.y < this.maxScrollY - 80) {
-    //             $(".sect").attr("data-aft", "松开!!");
-    //         } else if (this.y < this.maxScrollY - 20) {
-    //             $(".sect").attr("data-aft", "上拉加载更多...");
-    //         }
-
-    //         if (this.y > 80) {
-    //             $(".sect").attr("data-bef", "松开刷新..");
-    //         } else if (this.y > 40) {
-    //             $(".sect").attr("data-bef", "下拉刷新...");
-    //         }
-    //     });
-    //     bscl.on("scrollEnd", function() {
-    //         $(".sect").attr("data-bef", "下拉刷新...");
-    //         $(".sect").attr("data-aft", "上拉加载更多...");
-    //     });
-    //     bscl.on("touchEnd", function() {
-
-    //         if (bscl.y <= bscl.maxScrollY) {
-    //             // console.log(888);
-    //             if ($(".sect").attr("data-aft") === "松开!!") {
-    //                 pagenum++;
-    //                 console.log(pagenum)
-    //                 req_data(pagenum)
-    //             }
-    //             // bscl.refresh();
-    //             // window.localStorage.getItem
-    //         }
-    //     });
-    // }
-
-    /////
-    // iscroll.on("srcoll", function() {
-    //     console.log(12)
-    //     if (this.y < this.maxscrollY - 80) {
-    //         $(".sect").attr("data", "松开加载更多...");
-    //     } else if (this.y < this.maxscrollY - 40) {
-    //         $(".sect").attr("data", "上拉加载更多...");
-    //     }
-    //     if (this.y > 80) {
-    //         $(".sect").attr("list", "松开刷新...");
-    //     } else if (this.y > 40) {
-    //         $(".sect").attr("list", "下拉刷新...");
-    //     }
-    // });
-    // iscroll.on("scrollEnd", function() {
-    //     $(".sect").attr("list", "下拉刷新...");
-    //     $(".sect").attr("data", "上拉加载更多...");
-    // });
-    // $(".sect").on("tocuchend", function() {
-    //     if (iscroll.y <= iscroll.maxscrollY) {
-    //         if ($(".sect").attr("data") === "松开加载更多...") {
-    //             pagenum++;
-    //             loadData(pagenum)
-    //         }
-    //         iscroll.refresh();
-    //         // window.localStorage.getItem
-    //     }
-    // });
-
-    //////
-})
+});

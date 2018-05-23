@@ -1,0 +1,16 @@
+<!-- 渲染搜索页面默认信息 -->
+<script id="search_list" type="text/x-handlebars-template">
+    {{#each this}}<span data-id="{{id}}">{{ad_name}}</span> {{/each}}
+</script>
+<script id="s_get" type="text/x-handlebars-template">
+    {{#each this}}
+    <dl class="s_get_list">
+        <dt><img src="{{cover}}" alt=""></dt>
+        <dd>
+            <h5>{{title}}</h5>
+            <p>{{intro}}</p>
+            <h6> {{#each role}}{{this}}{{/each}}</h6>
+        </dd>
+    </dl>
+    {{/each}}
+</script>

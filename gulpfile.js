@@ -26,26 +26,23 @@ gulp.task("server", function() {
         .pipe(server({
             port: 8080,
             // open: true,
+            livereload: true,
             middleware: function(req, res, next) {
                 var obj = url.parse(req.url, true);
-                //
+                var query_data = obj.query;
                 if (obj.pathname.indexOf("/api") !== -1) {
-                    console.log(obj.pathname);
-                    // mock(obj.pathname);
-
+                    // console.log(obj.pathname);
                     res.end(JSON.stringify(mock(obj.pathname)));
                 }
-                // if (obj.pathname === "/api/list") {
-                //     res.writeHead(200, {
-                //         "Content-Type": "text/html;charset=utf-8"
-                //     });
-                //     res.end(JSON.stringify(json))
-                // } else if (obj.pathname === "/api/swiper") {
-                //     res.writeHead(200, {
-                //         "Content-Type": "text/html;charset=utf-8"
-                //     });
-                //     res.end(JSON.stringify(banner))
-                // }
+                if (obj.pathname.indexOf("/random") !== -1) {
+                    res.end(JSON.stringify(mock(obj.pathname)));
+
+                }
+                if (obj.pathname.indexOf("/search") !== -1) {
+                    // res.end(JSON.stringify(mock(obj.pathname)));
+                    res.end(JSON.stringify(mock(query_data.id)));
+                }
+
                 next()
             }
         }))

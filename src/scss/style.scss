@@ -5,20 +5,52 @@
     font-size: pxTorem(18px);
 }
 
-header,
-footer {
+#root {
+    // transform: translate(-20%)
+}
+
+header {
     width: 100%;
     height: pxTorem(45px);
     background: $header-bg;
     color: $black-color;
     line-height: pxTorem(45px);
-}
-
-//首页头部
-header {
     position: relative;
     padding: 0 pxTorem(45px);
     display: flex;
+}
+
+//首页公用的头部
+.tpl {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    ._icon {
+        width: pxTorem(45px);
+        height: pxTorem(45px);
+        // border: 1px solid red;
+    }
+    .tpl_lef {
+        display: flex;
+        align-items: center;
+        span {
+            margin-left: pxTorem(5px);
+            font-size: pxTorem(16px);
+            color: #666;
+        }
+    }
+    .tpl_lef_icon {
+        @include bg("../image/icon-back.png");
+        background-size: pxTorem(22px);
+    }
+    .tpl_rig_icon {
+        @include bg("../image/icon-home.png");
+        background-size: pxTorem(22px);
+    }
+}
+
+//首页头部
+header.index_header {
     .head_inner {
         height: 100%;
         width: pxTorem(180px);
@@ -40,7 +72,7 @@ header {
             width: 50%;
             height: 3px;
             background: #ccc;
-            transition: left 1s;
+            transition: left .5s;
         }
         b.move {
             left: 50%;
@@ -90,15 +122,824 @@ main {
 
 .shu_c,
 .shu_j {
-    overflow: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.shu_j {
+    overflow-y: auto;
+}
+
+//下拉刷新的样式--------------------
+div.drag_down {
+    width: 100%;
+    height: pxTorem(40px);
+    // line-height: pxTorem(40px);
+    font-size: pxTorem(14px);
+    // text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background: pink;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    b {
+        transform: rotate(90deg);
+        margin-right: pxTorem(10px);
+        transition: transform .3s;
+    }
+}
+
+div.up {
+    b {
+        transform: rotate(270deg);
+    }
 }
 
 .shu_c_inner {
-    height: 2000px;
-    background: orange;
+    height: auto;
+    // height: 14000px;
+    background: #ccc;
 }
 
+// .shu_j_inner {
+//     height: 1200px;
+//     background: pink;
+// }
+section.top {
+    background: #fff;
+    width: 100%;
+}
+
+// 首页搜索框
+.index_serch {
+    width: 100%;
+    height: pxTorem(55px);
+    padding: pxTorem(10px) 4%;
+    .index_serch_inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        p {
+            flex: 1;
+            font-size: pxTorem(14px);
+            color: $gray-color;
+            line-height: pxTorem(35px);
+            padding-left: pxTorem(45px);
+            @include bg("../image/icon-search.png", pxTorem(10px));
+            background-size: pxTorem(18px);
+            border: 1px solid $border-color;
+            border-radius: 2px;
+        }
+        b {
+            width: pxTorem(35px);
+            height: pxTorem(35px);
+            line-height: pxTorem(35px);
+            text-align: center;
+            border: 1px solid $border-color;
+            border-radius: 2px;
+            margin-left: pxTorem(5px);
+            @include bg("../image/icon-swicth-list.png"); ///背景图片
+            background-size: pxTorem(20px);
+        }
+        b.active {
+            @include bg("../image/icon-switch.png"); ///背景图片
+        }
+    }
+}
+
+// 首页小轮播
+.index_banner {
+    width: 100%;
+    .index_banner_inner {
+        width: 100%;
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+// 首页主列表
+.index_list {
+    width: 100%;
+    padding: pxTorem(10px) 8%;
+    ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            i {
+                width: pxTorem(25px);
+                height: pxTorem(25px);
+                margin-bottom: pxTorem(5px);
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            span {
+                font-size: pxTorem(12px);
+            }
+        }
+    }
+}
+
+// 本周最火章节
+.day_hot {
+    margin-top: pxTorem(10px);
+    background: #fff;
+    .day_hot_top {
+        height: pxTorem(45px);
+        width: 100%;
+        line-height: pxTorem(45px);
+        text-indent: pxTorem(20px);
+        position: relative;
+        border-bottom: 1px solid $border-color;
+    }
+    .day_hot_top:after {
+        content: "";
+        height: pxTorem(45px);
+        width: pxTorem(7px);
+        background: $btn-orange-border;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+    .day_hot_more {
+        margin-top: pxTorem(10px);
+        width: 100%;
+        font-size: pxTorem(14px);
+        height: pxTorem(40px);
+        line-height: pxTorem(40px);
+        text-align: center;
+        border-top: 1px solid $border-color;
+    }
+}
+
+//本周最火章节——列表
+.day_hot_list {
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+        width: 33.33%;
+        margin-top: pxTorem(10px);
+        display: flex;
+        dl {
+            width: pxTorem(85px);
+        }
+        dt {
+            width: 100%;
+            height: pxTorem(120px);
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        dd {
+            width: 100%;
+            margin-top: pxTorem(5px);
+            font-size: pxTorem(12px);
+        }
+    }
+    li:nth-of-type(3n+1) {
+        justify-content: flex-start;
+    }
+    li:nth-of-type(3n+2) {
+        justify-content: center;
+    }
+    li:nth-of-type(3n+3) {
+        justify-content: flex-end;
+    }
+}
+
+// 重磅推荐
+.heavy_data {
+    margin-top: pxTorem(10px);
+    background: #fff;
+    .heavy_top {
+        height: pxTorem(45px);
+        width: 100%;
+        font-size: pxTorem(16px);
+        line-height: pxTorem(45px);
+        padding: 0 pxTorem(20px);
+        border-bottom: 1px solid $border-color;
+        display: flex;
+        justify-content: space-between;
+        p {
+            color: #ccc;
+            span {
+                color: #333;
+                font-size: pxTorem(12px);
+            }
+            span.focus {
+                color: blue;
+            }
+        }
+    }
+}
+
+//换一换的底部样式------------------------
+div.change_bot {
+    height: pxTorem(45px);
+    width: 100%;
+    font-size: pxTorem(16px);
+    line-height: pxTorem(45px);
+    padding: 0 pxTorem(20px);
+    // border-bottom: 1px solid $border-color;
+    p {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        span {
+            height: 100%;
+            width: 50%;
+            text-align: center;
+            color: #333;
+            font-size: pxTorem(14px);
+        }
+        span:first-of-type {
+            border-right: 1px solid $border-color;
+        }
+    }
+}
+
+// 重磅推荐——列表
+.heavy_list {
+    width: 100%;
+    padding: 0 5%;
+    .heavy_list_inner {
+        width: 100%;
+        dl.easy_list {
+            width: 100%;
+            display: flex;
+            padding: pxTorem(15px) 0 pxTorem(15px) pxTorem(25px);
+            border-bottom: 1px solid $line-border;
+            align-items: center;
+            dt {
+                font-size: pxTorem(16px);
+                margin-right: pxTorem(15px);
+                position: relative;
+            }
+            dd {
+                font-size: pxTorem(12px);
+                color: #ccc;
+            }
+        }
+        .first_detail_icon dt:before {
+            content: "1";
+            width: pxTorem(14px);
+            height: pxTorem(16px);
+            line-height: pxTorem(16px);
+            text-align: center;
+            font-size: pxTorem(13px);
+            background: $btn-orange-bg;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .easy_list_icon dt:before {
+            content: attr(data-id);
+            width: pxTorem(14px);
+            height: pxTorem(16px);
+            line-height: pxTorem(16px);
+            text-align: center;
+            font-size: pxTorem(13px);
+            // background: $btn-orange-bg;
+            color: $btn-orange-bg;
+            position: absolute;
+            top: 50%;
+            left: - pxTorem(30px);
+            transform: translateY(-50%);
+        }
+    }
+}
+
+//左图游文结构-----------------------------
+dl.detail_list {
+    width: 100%;
+    display: flex;
+    padding: pxTorem(15px) 0 pxTorem(15px) 0;
+    border-bottom: 1px solid $line-border;
+    align-items: center;
+    dt {
+        width: pxTorem(85px);
+        height: pxTorem(113px);
+        background: #333;
+        margin-right: pxTorem(15px);
+        position: relative;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        strong {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            font-size: pxTorem(12px);
+            padding: 0 0 pxTorem(7px) pxTorem(6px);
+            color: #fff;
+            background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+        }
+    }
+    dd {
+        flex: 1;
+        height: pxTorem(113px);
+        overflow: hidden;
+        font-weight: normal;
+        font-size: pxTorem(12px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        h5 {
+            font-size: pxTorem(16px);
+        }
+        span {
+            font-size: pxTorem(13px);
+        }
+        p {
+            @include line(2); //多行文本省略
+        }
+        h6 {
+            display: flex;
+            b {
+                font-size: pxTorem(11px);
+                padding: pxTorem(0px) pxTorem(5px);
+                border-radius: pxTorem(3px);
+                border: 1px solid $green-color;
+                margin-right: pxTorem(5px);
+                color: $green-color;
+            }
+        }
+    }
+}
+
+//女生最爱——模块
+.girl_data {
+    margin-top: pxTorem(10px);
+    background: #fff;
+    .girl_top {
+        height: pxTorem(45px);
+        width: 100%;
+        font-size: pxTorem(16px);
+        line-height: pxTorem(45px);
+        padding: 0 pxTorem(20px);
+        border-bottom: 1px solid $border-color;
+        b {
+            color: #333;
+            font-weight: bolder;
+        }
+    }
+}
+
+// 女生最爱——模块——列表
+.girl_list {
+    width: 100%;
+    padding: 0 5%;
+    .girl_list_inner {
+        width: 100%;
+    }
+}
+
+//男生最爱——模块
+.boy_data {
+    margin-top: pxTorem(10px);
+    background: #fff;
+    .boy_top {
+        height: pxTorem(45px);
+        width: 100%;
+        font-size: pxTorem(16px);
+        line-height: pxTorem(45px);
+        padding: 0 pxTorem(20px);
+        border-bottom: 1px solid $border-color;
+        b {
+            color: #333;
+            font-weight: bolder;
+        }
+    }
+}
+
+// 男生最爱——模块——列表
+.boy_list {
+    width: 100%;
+    padding: 0 5%;
+    .boy_list_inner {
+        width: 100%;
+    }
+}
+
+// 限时免费章节
+.tody_free {
+    margin-top: pxTorem(10px);
+    background: #fff;
+    .tody_free_top {
+        height: pxTorem(45px);
+        width: 100%;
+        line-height: pxTorem(45px);
+        text-indent: pxTorem(20px);
+        position: relative;
+        border-bottom: 1px solid $border-color;
+    }
+    .tody_free_top:after {
+        content: "";
+        height: pxTorem(45px);
+        width: pxTorem(7px);
+        background: $btn-orange-border;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+    .tody_free_more {
+        margin-top: pxTorem(10px);
+        width: 100%;
+        font-size: pxTorem(14px);
+        height: pxTorem(40px);
+        line-height: pxTorem(40px);
+        text-align: center;
+        border-top: 1px solid $border-color;
+    }
+}
+
+//限时免费章节——列表
+.tody_free_list {
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+        width: 33.33%;
+        margin-top: pxTorem(10px);
+        display: flex;
+        dl {
+            width: pxTorem(85px);
+        }
+        dt {
+            width: 100%;
+            height: pxTorem(120px);
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        dd {
+            width: 100%;
+            margin-top: pxTorem(5px);
+            font-size: pxTorem(12px);
+        }
+    }
+    li:nth-of-type(3n+1) {
+        justify-content: flex-start;
+    }
+    li:nth-of-type(3n+2) {
+        justify-content: center;
+    }
+    li:nth-of-type(3n+3) {
+        justify-content: flex-end;
+    }
+}
+
+// 精选专题
+.best_data {
+    margin-top: pxTorem(10px);
+    background: #fff;
+    .best_top {
+        height: pxTorem(45px);
+        width: 100%;
+        font-size: pxTorem(16px);
+        line-height: pxTorem(45px);
+        padding: 0 pxTorem(20px);
+        border-bottom: 1px solid $border-color;
+        display: flex;
+        justify-content: space-between;
+        p {
+            color: #333;
+            // font-size: pxTorem(12px);
+        }
+    }
+    .best_more {
+        margin-top: pxTorem(10px);
+        width: 100%;
+        font-size: pxTorem(14px);
+        height: pxTorem(40px);
+        line-height: pxTorem(40px);
+        text-align: center;
+        border-top: 1px solid $border-color;
+    }
+}
+
+// //精选专题——列表
+.best_list {
+    width: 100%;
+    padding: 0 5%;
+    .best_list_inner {
+        width: 100%;
+        display: flex;
+        a {
+            width: 50%;
+            // height: 50px;
+            // margin: 0 pxTorem(4px);
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+        a:first-of-type {
+            margin-right: pxTorem(4px);
+        }
+        a:last-of-type {
+            margin-left: pxTorem(4px);
+        }
+    }
+}
+
+//瀑布流——模块
+.falls_data {
+    margin-top: pxTorem(10px);
+    background: #fff;
+}
+
+// 瀑布流——模块——列表
+.falls_list {
+    width: 100%;
+    padding: 0 5%;
+    .falls_list_inner {
+        width: 100%;
+    }
+}
+
+// ////////////////////////////////////////
+// 书架模块样式
 .shu_j_inner {
-    height: 200px;
-    background: pink;
+    width: 100%;
+    // height: 1200px;
+    background: white;
+}
+
+.sj_data {
+    width: 100%;
+    padding: 0 5%;
+    background: white;
+}
+
+//书架——左图游文结构-----------------------------
+.sj_detail_list_wrap {
+    width: 100%;
+}
+
+dl.sj_detail_list {
+    width: 100%;
+    display: flex;
+    padding: pxTorem(15px) 0 pxTorem(15px) 0;
+    border-bottom: 1px solid $line-border;
+    align-items: center;
+    dt {
+        width: pxTorem(85px);
+        height: pxTorem(113px);
+        background: #333;
+        margin-right: pxTorem(15px);
+        position: relative;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    dd {
+        flex: 1;
+        height: pxTorem(113px);
+        overflow: hidden;
+        font-weight: normal;
+        font-size: pxTorem(12px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        h5 {
+            font-size: pxTorem(16px);
+        }
+        span {
+            font-size: pxTorem(13px);
+            color: #333;
+        }
+        p {
+            font-size: pxTorem(11px);
+            color: #999;
+        }
+        h6 {
+            font-size: pxTorem(11px);
+            color: #999;
+        }
+    }
+}
+
+.sj_data .sj_list .sj_easy_list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    .sj_detail_list_wrap {
+        width: 33.3%;
+        display: flex;
+        dl.sj_detail_list {
+            width: pxTorem(100px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            dd {
+                width: 100%;
+                height: pxTorem(42px);
+                justify-content: flex-start;
+                padding-top: pxTorem(5px);
+                h5 {
+                    font-size: pxTorem(12px);
+                    line-height: pxTorem(16px);
+                }
+                span,
+                p,
+                h6 {
+                    display: none;
+                }
+            }
+        }
+    }
+    .sj_detail_list_wrap:nth-of-type(3n+1) {
+        justify-content: flex-start;
+    }
+    .sj_detail_list_wrap:nth-of-type(3n+2) {
+        justify-content: center;
+    }
+    .sj_detail_list_wrap:nth-of-type(3n+3) {
+        justify-content: flex-end;
+    }
+}
+
+//书架——左图游文结构-----------------结束------------
+//搜索页面————————————------------开始
+div.wrap {
+    // display: none;
+}
+
+.search {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.search_head {
+    width: 100%;
+}
+
+//搜索页面———头部
+.s_inner {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    .s_back_icon {
+        width: pxTorem(45px);
+        height: pxTorem(45px);
+        @include bg("../image/icon-back.png");
+        background-size: pxTorem(22px);
+    }
+    .s_fdj_icon {
+        width: pxTorem(38px);
+        height: pxTorem(38px);
+        border-right: 1px solid #ccc;
+        @include bg("../image/icon-search.png");
+        background-size: pxTorem(22px);
+    }
+    .s_cont {
+        flex: 1;
+        height: pxTorem(35px);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #ccc;
+        margin-right: pxTorem(22px);
+        span {
+            margin-left: pxTorem(5px);
+            border-left: 1px solid #ccc;
+            font-size: pxTorem(15px);
+            width: pxTorem(50px);
+            height: 100%;
+            text-align: center;
+            line-height: pxTorem(35px);
+            color: #666;
+        }
+        input {
+            flex: 1;
+            overflow: hidden;
+            font-size: pxTorem(14px);
+            text-indent: pxTorem(6px);
+        }
+    }
+}
+
+//搜索页默认列表
+.s_content {
+    // width: 100%;
+    // height: 100%;
+    flex: 1;
+    overflow: hidden;
+    background: #fff;
+    .s_default {
+        width: 100%;
+        padding: pxTorem(10px) 4% 0;
+        display: flex;
+        flex-wrap: wrap;
+        span {
+            font-size: pxTorem(14px);
+            margin: pxTorem(5px);
+            padding: pxTorem(2px) pxTorem(20px);
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            color: #666;
+        }
+        span:nth-of-type(3n+1) {
+            background: pink;
+        }
+        span:nth-of-type(3n+2) {
+            background: blanchedalmond;
+        }
+        span:nth-of-type(3n+3) {
+            background: greenyellow;
+        }
+    }
+}
+
+//搜索到的数据列表
+dl.s_get_list {
+    width: 100%;
+    padding: pxTorem(15px) 5%;
+    display: flex;
+    border-bottom: 1px solid $line-border;
+    align-items: center;
+    dt {
+        width: pxTorem(85px);
+        height: pxTorem(113px);
+        background: #333;
+        margin-right: pxTorem(15px);
+        position: relative;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    dd {
+        flex: 1;
+        height: pxTorem(113px);
+        overflow: hidden;
+        font-weight: normal;
+        font-size: pxTorem(12px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        h5 {
+            font-size: pxTorem(16px);
+        }
+        p {
+            font-size: pxTorem(13px);
+            color: #999;
+            @include line(2);
+        }
+        h6 {
+            font-size: pxTorem(13px);
+            color: #999;
+        }
+    }
+}
+
+.s_get {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: none;
+}
+
+//搜索不到的提示
+.s_err {
+    width: 100%;
+    padding: pxTorem(15px) 5%;
+    font-size: pxTorem(16px);
+    color: #666;
+    text-align: center;
+    display: none;
 }
