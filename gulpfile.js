@@ -30,6 +30,7 @@ gulp.task("server", function() {
             middleware: function(req, res, next) {
                 var obj = url.parse(req.url, true);
                 var query_data = obj.query;
+                console.log(obj.pathname);
                 if (obj.pathname.indexOf("/api") !== -1) {
                     // console.log(obj.pathname);
                     res.end(JSON.stringify(mock(obj.pathname)));

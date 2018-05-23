@@ -38,6 +38,16 @@ define(["jquery", "headr"], function($, Headlebars) {
         //     return arr[1];
         // }
     });
+    //万除以1000处理
+    Headlebars.registerHelper("changge_wan", function(num) {
+        return Math.round(num / 1000);
+    });
+    //获取数组第一个
+    Headlebars.registerHelper("get_list_first", function(arrs) {
+        return arrs[0]
+    });
+
+
 
 
     function rend(obj, dpl, prevent) {

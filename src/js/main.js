@@ -17,6 +17,8 @@ require.config({
         //对应相应的页面
         "index": "app/index",
         "sear_page": "app/sear_page",
+        "detail_page": "app/detail_page",
+        "read_page": "app/read_page",
 
         //模板
         "handle_tpl": "../page_tpl/index_handle_tpl.html",

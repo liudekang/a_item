@@ -16,227 +16,143 @@
 
 <body>
     <div id="root">
-
-        <!-- 首页的内容-->
-        <div class="wrap">
-            <!-- 首页头部 -->
-            <header class="index_header">
-                <div class="icon_left head_icon"></div>
-                <div class="head_inner">
-                    <span class="active">书城</span>
-                    <span>书架</span>
-                    <b class="line"></b>
+        <!-- 阅读页 -->
+        <div class="read">
+            <h3>第一章 阿萨大时代</h3>
+            <div class="read_p">
+                <p>阿达大厦的阿达说的啊实打实</p>
+                <p>阿萨德</p>
+                <p>阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实</p>
+            </div>
+            <div class="r_mark">
+                <div class="r_head tpl">
+                    <div class="tpl_lef">
+                        <div class="tpl_lef_icon _icon"></div>
+                        <span>返回</span>
+                    </div>
+                    <div class="tpl_rig_icon _icon"></div>
                 </div>
-                <div class="icon_right head_icon"></div>
-            </header>
-            <!-- 首页主体 -->
-            <main>
-                <div class="swiper-container index_scroll ">
-                    <div class="swiper-wrapper ban">
-                        <!-- 书城模块 -->
-                        <div class="swiper-slide shu_c">
-                            <div class="shu_c_inner">
-                                <section class="top">
-                                    <!-- 书城首页搜索框 -->
-                                    <div class="index_serch">
-                                        <div class="index_serch_inner">
-                                            <p class="btn_search">
-                                                输入书名/作者/关键字
-                                            </p>
-                                            <!-- <b>※</b> -->
-                                        </div>
-                                    </div>
-                                    <!-- 首页小轮播 -->
-                                    <div class="index_banner">
-                                        <div class="swiper-container index_banner_inner swiper-no-swiping">
-                                            <div class="swiper-wrapper index_banner_wrap">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- 首页主列表 -->
-                                    <div class="index_list">
-                                        <ul>
-                                            <li>
-                                                <i><img src="./image/icon-money.png" alt=""></i>
-                                                <span>限免</span>
-                                            </li>
-                                            <li>
-                                                <i><img src="./image/icon-female.png" alt=""></i>
-                                                <span>女生</span>
-                                            </li>
-                                            <li>
-                                                <i><img src="./image/icon-male.png" alt=""></i>
-                                                <span>男生</span>
-                                            </li>
-                                            <li>
-                                                <i><img src="./image/icon-category.png" alt=""></i>
-                                                <span>分类</span>
-                                            </li>
-                                            <li>
-                                                <i><img src="./image/icon-rank.png" alt=""></i>
-                                                <span>排行</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </section>
-                                <!-- 本周最火章节 -->
-                                <section class="day_hot">
-                                    <div class="day_hot_top">
-                                        本周最火
-                                    </div>
-                                    <!-- 本周最火列表渲染 -->
-                                    <ul class="day_hot_list"></ul>
-                                    <div class="day_hot_more">查看更多</div>
-                                </section>
-                                <!-- 重磅推荐 模块 -->
-                                <section class="heavy_data">
-                                    <div class="heavy_top">
-                                        <b>
-                                            重磅推荐 
-                                        </b>
-                                        <p>
-                                            <span class="focus">男</span> | <span>女</span>
-                                        </p>
-                                    </div>
-                                    <!-- 重磅推荐列表 -->
-                                    <div class="heavy_list">
-                                        <div class="heavy_list_inner">
-
-                                        </div>
-                                    </div>
-                                    <div class="change_bot">
-                                        <p>
-                                            <span>换一换</span>
-                                            <span>查看全部</span>
-                                        </p>
-                                    </div>
-                                </section>
-
-                                <!-- 女生最爱——模块 -->
-                                <section class="girl_data">
-                                    <div class="girl_top">
-                                        <b>女生最爱</b>
-                                    </div>
-                                    <!-- 女生最爱 列表 -->
-                                    <div class="girl_list">
-                                        <div class="girl_list_inner">
-
-                                        </div>
-                                    </div>
-                                    <div class="change_bot">
-                                        <p>
-                                            <span>换一换</span>
-                                            <span>查看女生频道》》</span>
-                                        </p>
-                                    </div>
-                                </section>
-                                <!-- 男生最爱——模块 -->
-                                <section class="boy_data">
-                                    <div class="boy_top">
-                                        <b>男生最爱</b>
-                                    </div>
-                                    <!-- 男生最爱 列表 -->
-                                    <div class="boy_list">
-                                        <div class="boy_list_inner">
-
-                                        </div>
-                                    </div>
-                                    <div class="change_bot">
-                                        <p>
-                                            <span>换一换</span>
-                                            <span>查看男生频道》》</span>
-                                        </p>
-                                    </div>
-                                </section>
-                                <!-- 限时免费章节 -->
-                                <section class="tody_free">
-                                    <div class="tody_free_top">
-                                        本周最火
-                                    </div>
-                                    <!-- 限时免费列表渲染 -->
-                                    <ul class="tody_free_list"></ul>
-                                    <div class="tody_free_more">更多限免佳作》》</div>
-                                </section>
-                                <!-- 精选专题章节 -->
-                                <section class="best_data">
-                                    <div class="best_top">
-                                        <b>精选专题</b>
-                                    </div>
-                                    <!-- 精选专题_列表 -->
-                                    <div class="best_list">
-                                        <div class="best_list_inner">
-                                        </div>
-                                    </div>
-                                    <div class="best_more">更多精彩专题》》</div>
-                                </section>
-                                <!-- 瀑布流——模块 -->
-                                <section class="falls_data">
-                                    <!-- 瀑布流数据 列表 -->
-                                    <div class="falls_list">
-                                        <div class="falls_list_inner">
-
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="drag_down">
-                                <b>✈</b>
-                                <p> 下拉可刷新</p>
-                            </div>
+                <div class="r_bot">
+                    <div class="r_nums">
+                        <button>上一章</button>
+                        <p><span>1</span> / <span>3106</span></p>
+                        <button>下一章</button>
+                    </div>
+                    <div class="r_fot">
+                        <p>
+                            <i></i>
+                            <span>目录</span>
+                        </p>
+                        <p class="font_active">
+                            <i></i>
+                            <span>字体</span>
+                        </p>
+                        <p class="day_active">
+                            <i></i>
+                            <span>夜间</span>
+                        </p>
+                        <p>
+                            <i></i>
+                            <span>下载</span>
+                        </p>
+                    </div>
+                    <div class="r_set">
+                        <div class="r_font_size">
+                            <strong>字号</strong>
+                            <button>大</button>
+                            <button>小</button>
                         </div>
-                        <!-- ########书架模块########## -->
-                        <div class="swiper-slide shu_j">
-                            <div class="shu_j_inner">
-
-                                <!-- 书架首页搜索框 -->
-                                <div class="index_serch">
-                                    <div class="index_serch_inner">
-                                        <p class="btn_search">
-                                            输入书名/作者/关键字
-                                        </p>
-                                        <b class="shu_j_btn "></b>
-                                    </div>
-                                </div>
-                                <!-- 书架——模块——列表 -->
-                                <section class="sj_data">
-                                    <!-- 书架数据 列表 -->
-                                    <div class="sj_list">
-                                        <div class="sj_list_inner ">
-
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
+                        <div class="r_background">
+                            <strong>背景</strong>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li class="active"></li>
+                                <li></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </main>
-            <footer>脚本信息</footer>
+            </div>
+
+        </div>
+        <!-- 渲染阅读数据 -->
+        <script id="read_tpl" type="text/x-handlebars-template">
+            {{#with (get_list_first (get_list_first item.toc))}}
+            <h3>{{title}}</h3>
+            <div class="read_p">
+                <p>阿达大厦的阿达说的啊实打实</p>
+                <p>阿萨德</p>
+                <p>阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实阿达大厦的阿达说的啊实打实</p>
+            </div>
+            <div class="r_mark">
+                <div class="r_head tpl">
+                    <div class="tpl_lef">
+                        <div class="tpl_lef_icon _icon"></div>
+                        <span>返回</span>
+                    </div>
+                    <div class="tpl_rig_icon _icon"></div>
+                </div>
+                <div class="r_bot">
+                    <div class="r_nums">
+                        <button>上一章</button>
+                        <p><span>1</span> / <span>3106</span></p>
+                        <button>下一章</button>
+                    </div>
+                    <div class="r_fot">
+                        <p>
+                            <i></i>
+                            <span>目录</span>
+                        </p>
+                        <p class="font_active">
+                            <i></i>
+                            <span>字体</span>
+                        </p>
+                        <p class="day_active">
+                            <i></i>
+                            <span>夜间</span>
+                        </p>
+                        <p>
+                            <i></i>
+                            <span>下载</span>
+                        </p>
+                    </div>
+                    <div class="r_set">
+                        <div class="r_font_size">
+                            <strong>字号</strong>
+                            <button>大</button>
+                            <button>小</button>
+                        </div>
+                        <div class="r_background">
+                            <strong>背景</strong>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li class="active"></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/with}}
+        </script>
+
+        <!-- 详情页 -->
+        <div class="detail">
 
         </div>
 
-        <!-- 搜索的页面 =========================-->
+        <!-- 搜索的页面 -->
         <div class="search">
-            <!-- 通用的头结构 -->
-            <section class="search_head">
-                <header class="s_inner">
-                    <div class="s_back_icon _icon"></div>
-                    <div class="s_cont">
-                        <div class="s_fdj_icon _icon"></div>
-                        <input type="text" placeholder="输入书名/作者/关键字" class="s_txt">
-                        <span class="s_btn">搜索</span>
-                    </div>
-                </header>
-            </section>
-            <!-- 搜索框内容 -->
-            <section class="s_content">
-                <div class="s_default"> </div>
-                <div class="s_get"> </div>
-                <div class="s_err">没有相应的搜索结果！！！</div>
-            </section>
 
         </div>
-        <!-- ================== -->
+        <!-- 首页的内容-->
+
     </div>
 
 
@@ -244,7 +160,7 @@
     <script src="./js/lib/require.js"></script>
     <script>
         require(["./js/main"], function() {
-            require(["index", "sear_page"]);
+            require(["read_page"]);
         })
     </script>
 </body>

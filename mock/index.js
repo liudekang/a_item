@@ -9,8 +9,13 @@ var pbl00 = require('./data/data_pb.json');
 //搜索信息
 var search = require('./data/search_list.json');
 
-//模拟一页弃妃
+//模拟一页弃妃-----模糊搜索
 var yiye = require('./data/yiyeqifei.json');
+
+//模拟兵王-----详情页
+var bingwang = require('./data/bingwang.json');
+//模拟兵王-----内容
+var bingwang_txt = require('./data/bingwang_txt.json');
 
 var objData = {
     '/api/list': topJson,
@@ -20,6 +25,8 @@ var objData = {
     '/random/pbl': pbl00,
     '/api/search_list': search,
     '67840': yiye,
+    '30047': bingwang,
+    '/api/bingwang_txt': bingwang_txt,
 }
 module.exports = function(url) {
     return objData[url];

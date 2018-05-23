@@ -16,42 +16,7 @@
 
 <body>
     <div id="root">
-        <!-- 搜索的页面 -->
-        <div class="search">
-            <!-- 通用的头结构 -->
-            <section class="search_head">
-                <header class="s_inner">
-                    <div class="s_back_icon _icon"></div>
-                    <div class="s_cont">
-                        <div class="s_fdj_icon _icon"></div>
-                        <input type="text" placeholder="输入书名/作者/关键字" class="s_txt">
-                        <span class="s_btn">搜索</span>
-                    </div>
-                </header>
-            </section>
-            <!-- 搜索框内容 -->
-            <section class="s_content">
-                <div class="s_default"> </div>
-                <div class="s_get"> </div>
-                <div class="s_err">没有相应的搜索结果！！！</div>
-            </section>
-            <!-- 渲染搜索页面默认信息 -->
-            <script id="search_list" type="text/x-handlebars-template">
-                {{#each this}}<span data-id="{{id}}">{{ad_name}}</span> {{/each}}
-            </script>
-            <script id="s_get" type="text/x-handlebars-template">
-                {{#each this}}
-                <dl class="s_get_list">
-                    <dt><img src="{{cover}}" alt=""></dt>
-                    <dd>
-                        <h5>{{title}}</h5>
-                        <p>{{intro}}</p>
-                        <h6> {{#each role}}{{this}}{{/each}}</h6>
-                    </dd>
-                </dl>
-                {{/each}}
-            </script>
-        </div>
+
         <!-- 首页的内容-->
         <div class="wrap">
             <!-- 首页头部 -->
@@ -75,7 +40,7 @@
                                     <!-- 书城首页搜索框 -->
                                     <div class="index_serch">
                                         <div class="index_serch_inner">
-                                            <p>
+                                            <p class="btn_search">
                                                 输入书名/作者/关键字
                                             </p>
                                             <!-- <b>※</b> -->
@@ -226,7 +191,7 @@
                                 <!-- 书架首页搜索框 -->
                                 <div class="index_serch">
                                     <div class="index_serch_inner">
-                                        <p>
+                                        <p class="btn_search">
                                             输入书名/作者/关键字
                                         </p>
                                         <b class="shu_j_btn "></b>
@@ -245,18 +210,33 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="sect" data-bef="下拉刷新" data-aft="上拉加载">
-                <div class="swiper-container parent">
-                    <div class="swiper-wrapper ban">
-                    </div>
-                    <div class="swiper-pagination page"></div>
-                    <div class="swiper-scrollbar bar"></div>
-                </div>
-            </div> -->
             </main>
             <footer>脚本信息</footer>
 
         </div>
+
+        <!-- 搜索的页面 =========================-->
+        <div class="search">
+            <!-- 通用的头结构 -->
+            <section class="search_head">
+                <header class="s_inner">
+                    <div class="s_back_icon _icon"></div>
+                    <div class="s_cont">
+                        <div class="s_fdj_icon _icon"></div>
+                        <input type="text" placeholder="输入书名/作者/关键字" class="s_txt">
+                        <span class="s_btn">搜索</span>
+                    </div>
+                </header>
+            </section>
+            <!-- 搜索框内容 -->
+            <section class="s_content">
+                <div class="s_default"> </div>
+                <div class="s_get"> </div>
+                <div class="s_err">没有相应的搜索结果！！！</div>
+            </section>
+
+        </div>
+        <!-- ================== -->
     </div>
 
 
