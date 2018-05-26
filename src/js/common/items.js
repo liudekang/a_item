@@ -6,11 +6,11 @@ define(["jquery", "headr"], function($, Headlebars) {
             return local.getItem(key);
         },
         set: function(key, val) {
-            if (!val) {
-                this.remove(key);
-            } else {
-                local.getItem(key, val);
-            }
+            // if (!val) {
+            this.remove(key);
+            // } else {
+            local.setItem(key, val);
+            // }
         },
         remove: function(key) {
             local.removeItem(key);

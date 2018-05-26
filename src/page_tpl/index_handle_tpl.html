@@ -1,3 +1,175 @@
+<!-- 渲染首页结构 -->
+<script id="index_html" type="text/x-handlebars-template">
+
+    <header class="index_header" data-msg="!-- 首页头部 --">
+        <div class="icon_left head_icon"></div>
+        <div class="head_inner">
+            <span class="active">书城</span>
+            <span>书架</span>
+            <b class="line"></b>
+        </div>
+        <div class="icon_right head_icon"></div>
+    </header>
+    <main data-msg="首页主体">
+        <div class="swiper-container index_scroll ">
+            <div class="swiper-wrapper ban">
+                <div class="swiper-slide shu_c" data-msg="书城模块">
+                    <div class="shu_c_inner">
+                        <section class="top">
+                            <div class="index_serch" data-msg="书城首页搜索框">
+                                <div class="index_serch_inner">
+                                    <p class="btn_search">
+                                        输入书名/作者/关键字
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="index_banner" data-msg="首页小轮播">
+                                <div class="swiper-container index_banner_inner swiper-no-swiping">
+                                    <div class="swiper-wrapper index_banner_wrap">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="index_list" data-msg="首页主列表">
+                                <ul>
+                                    <li>
+                                        <i><img src="./image/icon-money.png" alt=""></i>
+                                        <span>限免</span>
+                                    </li>
+                                    <li>
+                                        <i><img src="./image/icon-female.png" alt=""></i>
+                                        <span>女生</span>
+                                    </li>
+                                    <li>
+                                        <i><img src="./image/icon-male.png" alt=""></i>
+                                        <span>男生</span>
+                                    </li>
+                                    <li>
+                                        <i><img src="./image/icon-category.png" alt=""></i>
+                                        <span>分类</span>
+                                    </li>
+                                    <li>
+                                        <i><img src="./image/icon-rank.png" alt=""></i>
+                                        <span>排行</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="day_hot" data-msg="本周最火章节">
+                            <div class="day_hot_top">
+                                本周最火
+                            </div>
+                            <ul class="day_hot_list bingwang" data-msg="本周最火列表渲染"></ul>
+                            <div class="day_hot_more">查看更多</div>
+                        </section>
+                        <section class="heavy_data" data-msg="重磅推荐 模块">
+                            <div class="heavy_top">
+                                <b>
+                                    重磅推荐 
+                                </b>
+                                <p>
+                                    <span class="focus">男</span> | <span>女</span>
+                                </p>
+                            </div>
+                            <div class="heavy_list" data-msg="重磅推荐列表">
+                                <div class="heavy_list_inner">
+
+                                </div>
+                            </div>
+                            <div class="change_bot">
+                                <p>
+                                    <span>换一换</span>
+                                    <span>查看全部</span>
+                                </p>
+                            </div>
+                        </section>
+
+                        <section class="girl_data" data-msg="女生最爱——模块">
+                            <div class="girl_top">
+                                <b>女生最爱</b>
+                            </div>
+                            <div class="girl_list" data-msg="女生最爱 列表">
+                                <div class="girl_list_inner">
+
+                                </div>
+                            </div>
+                            <div class="change_bot">
+                                <p>
+                                    <span>换一换</span>
+                                    <span>查看女生频道》》</span>
+                                </p>
+                            </div>
+                        </section>
+                        <section class="boy_data" data-msg="男生最爱——模块">
+                            <div class="boy_top">
+                                <b>男生最爱</b>
+                            </div>
+                            <div class="boy_list" data-msg="男生最爱 列表">
+                                <div class="boy_list_inner">
+
+                                </div>
+                            </div>
+                            <div class="change_bot">
+                                <p>
+                                    <span>换一换</span>
+                                    <span>查看男生频道》》</span>
+                                </p>
+                            </div>
+                        </section>
+                        <section class="tody_free" data-msg="限时免费章节">
+                            <div class="tody_free_top">
+                                本周最火
+                            </div>
+                            <ul class="tody_free_list"></ul>
+                            <div class="tody_free_more">更多限免佳作》》</div>
+                        </section>
+                        <section class="best_data" data-msg="精选专题章节">
+                            <div class="best_top">
+                                <b>精选专题</b>
+                            </div>
+                            <div class="best_list">
+                                <div class="best_list_inner">
+                                </div>
+                            </div>
+                            <div class="best_more">更多精彩专题》》</div>
+                        </section>
+                        <section class="falls_data" data-msg="瀑布流——模块">
+                            <div class="falls_list">
+                                <div class="falls_list_inner">
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="drag_down">
+                        <b>✈</b>
+                        <p> 下拉可刷新</p>
+                    </div>
+                </div>
+                <div class="swiper-slide shu_j" data-msg=" ########书架模块##########">
+                    <div class="shu_j_inner">
+
+                        <div class="index_serch" data-msg="书架首页搜索框">
+                            <div class="index_serch_inner">
+                                <p class="btn_search">
+                                    输入书名/作者/关键字
+                                </p>
+                                <b class="shu_j_btn "></b>
+                            </div>
+                        </div>
+                        <section class="sj_data" data-msg="书架——模块——列表">
+                            <div class="sj_list">
+                                <div class="sj_list_inner ">
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>脚本信息</footer>
+</script>
 <!-- 渲染首页轮播数据 -->
 <script id="index_swp" type="text/x-handlebars-template">
     {{#each data}} {{#if ad_pic_url}}

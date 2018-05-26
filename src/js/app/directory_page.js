@@ -1,9 +1,10 @@
-require(["jquery", "render", "text!head_tpl", "bscroll", "text!detail_list_tpl", "items", "jsonp", "base64"], function($, render, head_tpl, bscroll, detail_list_tpl, items, jsonp, base64) {
+require(["jquery", "render", "text!head_tpl", "bscroll", "text!directory_page_tpl", "items", "jsonp", "base64"], function($, render, head_tpl, bscroll, directory_page_tpl, items, jsonp, base64) {
+
     $("body").append(head_tpl);
-    $("body").append(detail_list_tpl);
-    //点击返回
-    $("#root").on("click", ".detail .tpl_lef_icon", function() {
-        $("#root .detail").remove();
+    $("body").append(directory_page_tpl);
+
+    $("#root").on("click", ".page .tpl_lef_icon", function() {
+        $("#root .page").remove();
 
         var len_root_div = $("#root >div").length;
         console.log(len_root_div + "个div盒子");
@@ -16,48 +17,29 @@ require(["jquery", "render", "text!head_tpl", "bscroll", "text!detail_list_tpl",
         // });
 
     });
-    //点击跳转到目录页
-    $("#root").on("click", ".detail .detail_end", function() {
-        var directory_html = `<div class="page">
-                            <div class="page_header"></div>
-                            <div class="page_content"></div>
-                        </div>`;
-        $("#root").append(directory_html);
-
-        render({ title: "目录" }, $("#head_tpl"), $(".page_header"));
-        //搜索页的内容
-        // 获取搜索默认的数据
-        $.ajax({
-            url: "/api/chapter",
-            dataType: "json",
-            success: function(data) {
-                console.log(data.item);
-                //获取书架——列表数据
-                render(data.item, $("#p_content"), $(".page_content"));
-                var iscroll = new bscroll(".page_content");
-                iscroll.scrollTo(0, iscroll.maxScrollY);
-                $(".page_list li:last").css("color", "#ff6600")
-            },
-            error: function(err) {
-                console.warn(err)
+    //点击跳转到阅读页
+    $("#root").on("click", ".page  .page_list li", function() {
+        // console.log("+++++" + $(this));
+        $("#root >div").each(function() {
+            if ($(this).hasClass("read")) {
+                console.log("ppppppppppppppppppppppppppppppppppp")
+                $(this).remove();
+                var len_root_div = $("#root >div").length;
+                console.log(len_root_div + "个div盒子");
+                var root_tran = (len_root_div - 1) * 100 + "%";
+                $("#root").css({
+                    transform: `translate(-${root_tran})`
+                });
             }
         });
-
-        var len_root_div = $("#root >div").length;
-        console.log(len_root_div + "个div盒子");
-        var root_tran = (len_root_div - 1) * 100 + "%";
-        $("#root").css({
-            transform: `translate(-${root_tran})`
-        });
-
-    });
-    //点击跳转到阅读页
-    $("#root").on("click", ".detail .detail_btn_read", function() {
         var read_page_html = `<div class="read"></div>`;
         $("#root").append(read_page_html);
-        // http://dushu.xiaomi.com/drm/v0/fiction/link?fiction_id=30047&chapter_id=5&format=jsonp
+
         render({ title: "目录" }, $("#head_tpl"), $(".page_header"));
-        var chapter_id = items.get("chapter_id") || 1;
+
+        var chapter_id = $(this).index() + 1;
+
+        items.set("chapter_id", chapter_id);
         var fiction_id = items.get("fiction_id") || "30047";
         $.ajax({
             //跳转到指定书，指定章
@@ -115,6 +97,5 @@ require(["jquery", "render", "text!head_tpl", "bscroll", "text!detail_list_tpl",
         });
 
     });
-
 
 })

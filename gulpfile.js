@@ -25,6 +25,7 @@ gulp.task("server", function() {
     gulp.src("src")
         .pipe(server({
             port: 8080,
+            host: "169.254.19.2",
             // open: true,
             livereload: true,
             middleware: function(req, res, next) {
@@ -33,7 +34,14 @@ gulp.task("server", function() {
                 console.log(obj.pathname);
                 if (obj.pathname.indexOf("/api") !== -1) {
                     // console.log(obj.pathname);
-                    res.end(JSON.stringify(mock(obj.pathname)));
+                    if (query_data.format == "jsonp") {
+                        var list_obj = mock(obj.pathname).items;
+                        console.log(query_data);
+                        res.end(JSON.stringify(list_obj[query_data.chapter_id - 1]));
+                    } else {
+                        res.end(JSON.stringify(mock(obj.pathname)));
+                    }
+
                 }
                 if (obj.pathname.indexOf("/random") !== -1) {
                     res.end(JSON.stringify(mock(obj.pathname)));

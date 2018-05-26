@@ -14,8 +14,13 @@ var yiye = require('./data/yiyeqifei.json');
 
 //模拟兵王-----详情页
 var bingwang = require('./data/bingwang.json');
-//模拟兵王-----内容
-var bingwang_txt = require('./data/bingwang_txt.json');
+//模拟兵王-----目录页
+var chapter = require("./data/chapter.json");
+//模拟兵王-----内容----jsonp请求回来
+
+var bingwang_page = require('./data/bingwang_txt.json');
+
+var bingwang_page_chapter = require('./data/bingwang_page_chapter.json');
 
 var objData = {
     '/api/list': topJson,
@@ -25,8 +30,11 @@ var objData = {
     '/random/pbl': pbl00,
     '/api/search_list': search,
     '67840': yiye,
-    '30047': bingwang,
-    '/api/bingwang_txt': bingwang_txt,
+    // '30047': bingwang,
+    '/api/datailList': bingwang,
+    '/api/bingwang_page': bingwang_page,
+    '/api/bingwang_page_chapter': bingwang_page_chapter,
+    "/api/chapter": chapter
 }
 module.exports = function(url) {
     return objData[url];

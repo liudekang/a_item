@@ -46,15 +46,47 @@ define(["jquery", "headr"], function($, Headlebars) {
     Headlebars.registerHelper("get_list_first", function(arrs) {
         return arrs[0]
     });
+    //时间戳
+    Headlebars.registerHelper("data_time", function(num) {
+        var date = new Date(num * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-',
+            M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-',
+            D = date.getDate() + ' ',
+            h = date.getHours() + ':',
+            m = date.getMinutes() + ':',
+            s = date.getSeconds();
+        return Y + M + D + h + m + s;
+    });
+    //标签只出来三个
+    Headlebars.registerHelper("d_label", function(num) {
+        if (num < 3) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    //目录只让出来300章
+    Headlebars.registerHelper("page", function(num) {
+        if (num < 300) {
+            return true;
+        } else {
+            return false;
+        }
+    });
 
 
 
-
-    function rend(obj, dpl, prevent) {
+    function rend(obj, dpl, prevent, isTrues) {
         var source = dpl.html();
         var template = Headlebars.compile(source);
         var html = template(obj);
-        prevent.append(html);
+        var isTrue = isTrues || false;
+        if (isTrue) {
+            prevent.html(html);
+        } else {
+            prevent.append(html);
+        }
+
     }
     return rend;
 })

@@ -801,6 +801,7 @@ div.wrap {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    // display: none;
 }
 
 .search_head {
@@ -947,11 +948,82 @@ dl.s_get_list {
 
 //搜索页面—————————结束
 //详情页-------------开始
+@mixin header_style() {
+    position: relative;
+    padding: 0 pxTorem(45px);
+    display: flex;
+}
+
+@mixin box_style() {
+    width: 100%;
+    background: #fff;
+    margin-bottom: pxTorem(10px);
+}
+
+@mixin list_header() {
+    width: 100%;
+    padding-left: pxTorem(10px);
+    position: relative;
+    height: pxTorem(40px);
+    line-height: pxTorem(40px);
+    border-bottom: 1px solid $border-color;
+    font-size: pxTorem(14px);
+    margin-bottom: pxTorem(10px);
+}
+
+@mixin list_content() {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    a {
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 0.26667rem;
+    }
+    dl {
+        dt {
+            width: pxTorem(85px);
+            height: pxTorem(113px);
+            margin: 0 auto;
+            background: #ccc;
+            img {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+        dd {
+            width: pxTorem(85px);
+            margin: 0 auto;
+            flex: 1;
+            text-align: left;
+            span {
+                font-size: pxTorem(12px);
+                text-align: center;
+                color: $gray-color;
+            }
+        }
+    }
+}
+
+@mixin list_footer() {
+    width: 100%;
+    height: pxTorem(44px);
+    text-align: center;
+    line-height: pxTorem(44px);
+    border-top: 1px solid $border-color;
+    font-size: pxTorem(12px);
+}
+
+//详情页-------------开始
 .detail {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #ccc;
+    background: #f5f5f5;
+    // display: none;
 }
 
 //详情页头部
@@ -960,7 +1032,7 @@ dl.s_get_list {
 }
 
 //左图游文结构-----------------------------
-dl.d_detail_list {
+dl.detail_list {
     width: 100%;
     display: flex;
     padding: pxTorem(15px) 0 pxTorem(15px) 0;
@@ -1010,21 +1082,58 @@ dl.d_detail_list {
 }
 
 .d_cont {
+    height: 100%;
     width: 100%;
-    .d_cont_summary {
-        width: 100%;
-        background: #fff;
+    overflow-y: scroll;
+    padding-bottom: pxTorem(40px);
+    .detail_summary {
+        @include box_style();
         >div {
             width: 100%;
             padding: 0 5%;
         }
-        .d_cont_summary_dl {
+        .detail_summary_dl {
             padding: 0 10%;
+        }
+    }
+    .detail_labels {
+        @include box_style();
+        padding: 0 pxTorem(10px);
+        h3 {
+            width: 100%;
+            height: pxTorem(40px);
+            line-height: pxTorem(40px);
+            font-size: pxTorem(16px);
+            font-weight: 800;
+            color: #8d8d8d;
+        }
+        b {
+            display: inline-block;
+            width: auto;
+            line-height: pxTorem(25px);
+            padding: 0 pxTorem(20px);
+            color: #766d5d;
+            border-radius: pxTorem(4px);
+            background: #fcedda;
+            font-size: pxTorem(14px);
+            text-align: center;
+            margin-right: pxTorem(10px);
+            border: pxTorem(1px) solid #d3d3d3;
+            margin-bottom: pxTorem(15px);
+        }
+        b:nth-of-type(3n+1) {
+            background: pink;
+        }
+        b:nth-of-type(3n+2) {
+            background: blanchedalmond;
+        }
+        b:nth-of-type(3n+3) {
+            background: #e8f9db;
         }
     }
 }
 
-.d_cont_btns {
+.detail_btns {
     display: flex;
     justify-content: space-between;
     margin: pxTorem(10px) 0;
@@ -1035,6 +1144,7 @@ dl.d_detail_list {
         background: #fff;
         border: 1px solid #ccc;
         border-radius: 7px;
+        font-size: pxTorem(16px);
     }
     button:first-of-type {
         background: orange;
@@ -1043,7 +1153,7 @@ dl.d_detail_list {
     }
 }
 
-.d_cont .d_cont_summary .d_cont_txt {
+.detail .detail_summary .detail_txt {
     padding-top: pxTorem(15px);
     padding-bottom: pxTorem(15px);
     font-size: pxTorem(13px);
@@ -1051,13 +1161,53 @@ dl.d_detail_list {
     line-height: pxTorem(18px);
 }
 
-.d_cont_end {
+.detail_end {
     height: pxTorem(40px);
     line-height: pxTorem(40px);
     font-size: pxTorem(13px);
     color: #999;
     text-align: center;
     border-top: 1px solid #ccc;
+}
+
+.detail_other {
+    @include box_style();
+    h3 {
+        @include list_header();
+        border: none;
+        padding-left: pxTorem(10px);
+        color: $gray-color;
+    }
+    .detail_inner {
+        @include list_content();
+    }
+    h4 {
+        @include list_footer()
+    }
+}
+
+.detail_other .detail_inner dl {
+    dt,
+    dd {
+        width: 2.7rem;
+    }
+}
+
+.detail_message {
+    @include box_style();
+    margin-bottom: 0;
+    h3,
+    p {
+        width: 100%;
+        padding-left: pxTorem(10px);
+        height: pxTorem(40px);
+        line-height: pxTorem(40px);
+        font-size: pxTorem(16px);
+        color: $gray-color;
+    }
+    p {
+        height: pxTorem(50px);
+    }
 }
 
 //详情页-------------结束
@@ -1067,19 +1217,22 @@ dl.d_detail_list {
     background: darkcyan;
     padding: 0 5%;
     position: relative;
-    h3 {
-        width: 100%;
-        border-bottom: 1px solid orange;
-        font-size: pxTorem(20px);
-        color: orange;
-        padding-top: pxTorem(15px);
-    }
+    font-size: pxTorem(15px);
     .read_p {
         width: 100%;
+        height: 100%;
+        overflow: auto;
         padding-top: pxTorem(10px);
+        // padding-top: pxTorem(15px);
+        h3 {
+            width: 100%;
+            border-bottom: 1px solid orange;
+            font-size: pxTorem(20px);
+            color: orange;
+            padding-bottom: pxTorem(6px);
+        }
         p {
-            font-size: pxTorem(15px);
-            line-height: pxTorem(20px);
+            // font-size: pxTorem(15px);
             font-family: "幼圆";
             text-indent: 2em;
             margin: pxTorem(5px) 0;
@@ -1094,6 +1247,7 @@ dl.d_detail_list {
     position: absolute;
     left: 0;
     top: 0;
+    display: none;
 }
 
 .r_head {
@@ -1140,7 +1294,7 @@ dl.d_detail_list {
         p {
             line-height: pxTorem(40px);
             font-size: pxTorem(14px);
-            color: #333;
+            color: #fff;
         }
     }
     .r_fot {
@@ -1198,6 +1352,7 @@ dl.d_detail_list {
     background: black;
     width: 100%;
     padding-top: pxTorem(10px);
+    display: none;
     >div {
         width: 100%;
         height: pxTorem(50px);
@@ -1271,3 +1426,43 @@ dl.d_detail_list {
 }
 
 //阅读页-------------结束
+#root {
+    // transform: translate(-80%);
+}
+
+//----------目录------------------------------//
+.page {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    background: #f5f5f5;
+    flex-direction: column;
+    .page_header {
+        width: 100%;
+    }
+    .page_content {
+        flex: 1;
+        width: 100%;
+        background: #fff;
+        height: 100%;
+        overflow: hidden;
+        .page_list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            li {
+                width: 100%;
+                height: pxTorem(50px);
+                line-height: pxTorem(50px);
+                text-align: left;
+                padding: 0 pxTorem(10px);
+                border-bottom: pxTorem(1px) solid #ccc;
+                font-size: pxTorem(16px);
+            }
+        }
+    }
+}
+
+//目录页---------结束

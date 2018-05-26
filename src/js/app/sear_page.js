@@ -1,24 +1,8 @@
 require(["jquery", "render", "text!ser_tpl"], function($, render, ser_tpl) {
     $("body").append(ser_tpl);
     //搜索页的内容
-    //获取搜索默认的数据
-    $.ajax({
-        url: "/api/search_list",
-        dataType: "json",
-        success: function(data) {
-            console.log(data);
-            //获取书架——列表数据
-            $(".s_get").html("");
-            $(".s_default").show().siblings().hide();
-
-            render(data.ads, $("#search_list"), $(".s_content .s_default"));
-        },
-        error: function(err) {
-            console.warn(err)
-        }
-    });
     //点击默认列表的子项进行跳转
-    $(".s_default").on("click", "span", function() {
+    $("#root").on("click", ".search .s_default span", function() {
         var val = $(this).html();
         var s_id = $(this).data("id");
         console.log(s_id, val)
@@ -41,7 +25,7 @@ require(["jquery", "render", "text!ser_tpl"], function($, render, ser_tpl) {
         });
     });
     //点击搜索进行跳转
-    $(".s_btn").on("click", function() {
+    $("#root").on("click", ".search .s_btn", function() {
         var val = $(".s_txt").val();
         if (val.indexOf("妃") !== -1) {
             $.ajax({
@@ -69,10 +53,23 @@ require(["jquery", "render", "text!ser_tpl"], function($, render, ser_tpl) {
     //////
 
     //搜索页面——点击返回
-    $(".s_back_icon").on("click", function() {
+    $("#root").on("click", ".search .s_back_icon", function() {
+        $("#root .search").remove();
+
+        var len_root_div = $("#root >div").length;
+        console.log(len_root_div + "个div盒子");
+        var root_tran = (len_root_div - 1) * 100 + "%";
         $("#root").css({
-            transform: "translate(0 )"
+            transform: `translate(-${root_tran})`
         });
 
+        // $("#root").css({
+        //     transform: "translate(0 )"
+        // });
+
     });
+    // $("#root").on("click", ".search", function() {
+    //     console.log(11)
+
+    // });
 })

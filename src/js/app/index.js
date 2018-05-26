@@ -2,6 +2,7 @@ require(["jquery", "swiper", "bscroll", "render", "GetSlideDirection", "text!han
     $("body").append(handle_tpl);
     $("body").append(head_tpl);
     var pagenum = 0;
+    render({}, $("#index_html"), $(".wrap"));
     //首页的大轮播结构
     var mySwiper = new swiper('.index_scroll', {
         speed: 300,
@@ -25,11 +26,6 @@ require(["jquery", "swiper", "bscroll", "render", "GetSlideDirection", "text!han
         probeType: 2,
         click: true,
         scrollbar: true
-            // wheel: {
-            //     selectedIndex: 0,
-            //     rotate: 25,
-            //     adjustTime: 400
-            // }
     });
 
     //获取瀑布流的数据
@@ -114,18 +110,75 @@ require(["jquery", "swiper", "bscroll", "render", "GetSlideDirection", "text!han
     });
     //书架模块——点击切换类型
     $(".shu_j_btn").on("click", function() {
+
         $(this).toggleClass("active");
         $(".sj_list_inner").toggleClass("sj_easy_list");
     });
 
     //书城搜索——点击切换
     $(".btn_search").on("click", function() {
+        var search_html = `<div class="search"></div>`;
+        $("#root").append(search_html);
+        render({}, $("#s_html"), $(".search"));
+        //获取搜索默认的数据
+        $.ajax({
+            url: "/api/search_list",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                //获取书架——列表数据
+                $(".s_get").html("");
+                $(".s_default").show().siblings().hide();
+
+                render(data.ads, $("#search_list"), $(".s_content .s_default"));
+            },
+            error: function(err) {
+                console.warn(err)
+            }
+        });
+
         $(".s_get").html("");
         $(".s_default").show().siblings().hide();
+
+        var len_root_div = $("#root >div").length;
+        console.log(len_root_div + "个div盒子");
+        var root_tran = (len_root_div - 1) * 100 + "%";
         $("#root").css({
-            transform: "translate(-100% )"
+            transform: `translate(-${root_tran})`
         });
     });
+
+    //点击兵王，跳转兵王的详情页
+    $(".bingwang").on("click", function() {
+        var detail_html = `<div class="detail"><div class="d_header"></div><div class="d_cont"></div></div>`;
+        $("#root").append(detail_html);
+
+        render({ title: "大时代" }, $("#head_tpl"), $(".detail .d_header"));
+        render({ title: "目录" }, $("#head_tpl"), $(".page_header"));
+
+        var len_root_div = $("#root >div").length;
+        console.log(len_root_div + "个div盒子");
+        var root_tran = (len_root_div - 1) * 100 + "%";
+        $("#root").css({
+            transform: `translate(-${root_tran})`
+        });
+
+        //搜索页的内容
+        //获取搜索默认的数据
+        $.ajax({
+            url: "/api/datailList",
+            dataType: "json",
+            success: function(data) {
+                console.log("+++++++++++++++++");
+                console.log(data);
+                //获取书架——列表数据
+                render(data, $("#detail_list"), $(".d_cont"));
+            },
+            error: function(err) {
+                console.warn(err)
+            }
+        });
+    })
 
 
 });

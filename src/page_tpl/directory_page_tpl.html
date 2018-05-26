@@ -1,0 +1,7 @@
+<script id="p_content" type="text/x-handlebars-template">
+    <ul class="page_list">
+        {{#each toc}}{{#if (page @index)}}
+        <li>{{this.title}}</li>
+        {{/if}}{{/each}}
+    </ul>
+</script>
