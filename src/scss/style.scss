@@ -1,12 +1,7 @@
+@import "./_swiper.css";
 @import "./_common.scss";
-@import "./_config.scss";
-@import "./_mixin.scss";
 .wrap {
     font-size: pxTorem(18px);
-}
-
-#root {
-    // transform: translate(-20%)
 }
 
 header {
@@ -29,7 +24,6 @@ header {
     ._icon {
         width: pxTorem(45px);
         height: pxTorem(45px);
-        // border: 1px solid red;
     }
     .tpl_lef {
         display: flex;
@@ -72,7 +66,7 @@ header.index_header {
             left: 0;
             width: 50%;
             height: 3px;
-            background: #ccc;
+            // background: #ccc;
             transition: left .5s;
         }
         b.move {
@@ -135,13 +129,10 @@ main {
 div.drag_down {
     width: 100%;
     height: pxTorem(40px);
-    // line-height: pxTorem(40px);
     font-size: pxTorem(14px);
-    // text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    // background: pink;
     position: absolute;
     top: 0;
     left: 0;
@@ -161,14 +152,9 @@ div.up {
 
 .shu_c_inner {
     height: auto;
-    // height: 14000px;
     background: #ccc;
 }
 
-// .shu_j_inner {
-//     height: 1200px;
-//     background: pink;
-// }
 section.top {
     background: #fff;
     width: 100%;
@@ -207,6 +193,7 @@ section.top {
         }
         b.active {
             @include bg("../image/icon-switch.png"); ///背景图片
+            background-size: pxTorem(20px);
         }
     }
 }
@@ -357,7 +344,6 @@ div.change_bot {
     font-size: pxTorem(16px);
     line-height: pxTorem(45px);
     padding: 0 pxTorem(20px);
-    // border-bottom: 1px solid $border-color;
     p {
         width: 100%;
         height: 100%;
@@ -417,7 +403,6 @@ div.change_bot {
             line-height: pxTorem(16px);
             text-align: center;
             font-size: pxTorem(13px);
-            // background: $btn-orange-bg;
             color: $btn-orange-bg;
             position: absolute;
             top: 50%;
@@ -628,7 +613,6 @@ dl.detail_list {
         justify-content: space-between;
         p {
             color: #333;
-            // font-size: pxTorem(12px);
         }
     }
     .best_more {
@@ -642,7 +626,7 @@ dl.detail_list {
     }
 }
 
-// //精选专题——列表
+//精选专题——列表
 .best_list {
     width: 100%;
     padding: 0 5%;
@@ -651,8 +635,6 @@ dl.detail_list {
         display: flex;
         a {
             width: 50%;
-            // height: 50px;
-            // margin: 0 pxTorem(4px);
             img {
                 display: block;
                 width: 100%;
@@ -788,681 +770,19 @@ dl.sj_detail_list {
 }
 
 //书架——左图游文结构-----------------结束------------
+// 
 //搜索页面————————————------------开始
-div.wrap {
-    // display: none;
-}
-
-.search {
-    display: none;
-    width: 100%;
-    height: 100%;
-    border: 1px solid red;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    // display: none;
-}
-
-.search_head {
-    width: 100%;
-}
-
-//搜索页面———头部
-.s_inner {
-    display: flex;
-    align-items: center;
-    padding: 0;
-    .s_back_icon {
-        width: pxTorem(45px);
-        height: pxTorem(45px);
-        @include bg("../image/icon-back.png");
-        background-size: pxTorem(22px);
-    }
-    .s_fdj_icon {
-        width: pxTorem(38px);
-        height: pxTorem(38px);
-        border-right: 1px solid #ccc;
-        @include bg("../image/icon-search.png");
-        background-size: pxTorem(22px);
-    }
-    .s_cont {
-        flex: 1;
-        height: pxTorem(35px);
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        background: #fff;
-        border: 1px solid #ccc;
-        margin-right: pxTorem(22px);
-        span {
-            margin-left: pxTorem(5px);
-            border-left: 1px solid #ccc;
-            font-size: pxTorem(15px);
-            width: pxTorem(50px);
-            height: 100%;
-            text-align: center;
-            line-height: pxTorem(35px);
-            color: #666;
-        }
-        input {
-            flex: 1;
-            overflow: hidden;
-            font-size: pxTorem(14px);
-            text-indent: pxTorem(6px);
-        }
-    }
-}
-
-//搜索页默认列表
-.s_content {
-    // width: 100%;
-    // height: 100%;
-    flex: 1;
-    overflow: hidden;
-    background: #fff;
-    .s_default {
-        width: 100%;
-        padding: pxTorem(10px) 4% 0;
-        display: flex;
-        flex-wrap: wrap;
-        span {
-            font-size: pxTorem(14px);
-            margin: pxTorem(5px);
-            padding: pxTorem(2px) pxTorem(20px);
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            color: #666;
-        }
-        span:nth-of-type(3n+1) {
-            background: pink;
-        }
-        span:nth-of-type(3n+2) {
-            background: blanchedalmond;
-        }
-        span:nth-of-type(3n+3) {
-            background: greenyellow;
-        }
-    }
-}
-
-//搜索到的数据列表
-dl.s_get_list {
-    width: 100%;
-    padding: pxTorem(15px) 5%;
-    display: flex;
-    border-bottom: 1px solid $line-border;
-    align-items: center;
-    dt {
-        width: pxTorem(85px);
-        height: pxTorem(113px);
-        background: #333;
-        margin-right: pxTorem(15px);
-        position: relative;
-        img {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-    }
-    dd {
-        flex: 1;
-        height: pxTorem(113px);
-        overflow: hidden;
-        font-weight: normal;
-        font-size: pxTorem(12px);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        h5 {
-            font-size: pxTorem(16px);
-        }
-        p {
-            font-size: pxTorem(13px);
-            color: #999;
-            @include line(2);
-        }
-        h6 {
-            font-size: pxTorem(13px);
-            color: #999;
-        }
-    }
-}
-
-.s_get {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    display: none;
-}
-
-//搜索不到的提示
-.s_err {
-    width: 100%;
-    padding: pxTorem(15px) 5%;
-    font-size: pxTorem(16px);
-    color: #666;
-    text-align: center;
-    display: none;
-}
-
+@import "./_search.scss";
 //搜索页面—————————结束
+// 
 //详情页-------------开始
-@mixin header_style() {
-    position: relative;
-    padding: 0 pxTorem(45px);
-    display: flex;
-}
-
-@mixin box_style() {
-    width: 100%;
-    background: #fff;
-    margin-bottom: pxTorem(10px);
-}
-
-@mixin list_header() {
-    width: 100%;
-    padding-left: pxTorem(10px);
-    position: relative;
-    height: pxTorem(40px);
-    line-height: pxTorem(40px);
-    border-bottom: 1px solid $border-color;
-    font-size: pxTorem(14px);
-    margin-bottom: pxTorem(10px);
-}
-
-@mixin list_content() {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    a {
-        width: 33%;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        margin-bottom: 0.26667rem;
-    }
-    dl {
-        dt {
-            width: pxTorem(85px);
-            height: pxTorem(113px);
-            margin: 0 auto;
-            background: #ccc;
-            img {
-                width: 100%;
-                height: 100%;
-                display: block;
-            }
-        }
-        dd {
-            width: pxTorem(85px);
-            margin: 0 auto;
-            flex: 1;
-            text-align: left;
-            span {
-                font-size: pxTorem(12px);
-                text-align: center;
-                color: $gray-color;
-            }
-        }
-    }
-}
-
-@mixin list_footer() {
-    width: 100%;
-    height: pxTorem(44px);
-    text-align: center;
-    line-height: pxTorem(44px);
-    border-top: 1px solid $border-color;
-    font-size: pxTorem(12px);
-}
-
-//详情页-------------开始
-.detail {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #f5f5f5;
-    // display: none;
-}
-
-//详情页头部
-.d_header {
-    width: 100%;
-}
-
-//左图游文结构-----------------------------
-dl.detail_list {
-    width: 100%;
-    display: flex;
-    padding: pxTorem(15px) 0 pxTorem(15px) 0;
-    align-items: center;
-    dt {
-        width: pxTorem(85px);
-        height: pxTorem(113px);
-        background: #333;
-        margin-right: pxTorem(25px);
-        position: relative;
-        img {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-    }
-    dd {
-        flex: 1;
-        height: pxTorem(113px);
-        overflow: hidden;
-        font-weight: normal;
-        font-size: pxTorem(12px);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        h5 {
-            font-size: pxTorem(14px);
-            margin-bottom: pxTorem(10px);
-        }
-        strong {
-            font-size: pxTorem(13px);
-            color: $blue-border-color;
-        }
-        p {
-            font-size: pxTorem(12px);
-            color: #666;
-            span {
-                font-size: pxTorem(11px);
-                padding: pxTorem(0px) pxTorem(5px);
-                border-radius: pxTorem(3px);
-                border: 1px solid $blue-color;
-                margin-left: pxTorem(5px);
-                color: $blue-color;
-            }
-        }
-    }
-}
-
-.d_cont {
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-    padding-bottom: pxTorem(40px);
-    .detail_summary {
-        @include box_style();
-        >div {
-            width: 100%;
-            padding: 0 5%;
-        }
-        .detail_summary_dl {
-            padding: 0 10%;
-        }
-    }
-    .detail_labels {
-        @include box_style();
-        padding: 0 pxTorem(10px);
-        h3 {
-            width: 100%;
-            height: pxTorem(40px);
-            line-height: pxTorem(40px);
-            font-size: pxTorem(16px);
-            font-weight: 800;
-            color: #8d8d8d;
-        }
-        b {
-            display: inline-block;
-            width: auto;
-            line-height: pxTorem(25px);
-            padding: 0 pxTorem(20px);
-            color: #766d5d;
-            border-radius: pxTorem(4px);
-            background: #fcedda;
-            font-size: pxTorem(14px);
-            text-align: center;
-            margin-right: pxTorem(10px);
-            border: pxTorem(1px) solid #d3d3d3;
-            margin-bottom: pxTorem(15px);
-        }
-        b:nth-of-type(3n+1) {
-            background: pink;
-        }
-        b:nth-of-type(3n+2) {
-            background: blanchedalmond;
-        }
-        b:nth-of-type(3n+3) {
-            background: #e8f9db;
-        }
-    }
-}
-
-.detail_btns {
-    display: flex;
-    justify-content: space-between;
-    margin: pxTorem(10px) 0;
-    button {
-        width: 49%;
-        height: pxTorem(35px);
-        border: none;
-        background: #fff;
-        border: 1px solid #ccc;
-        border-radius: 7px;
-        font-size: pxTorem(16px);
-    }
-    button:first-of-type {
-        background: orange;
-        border: none;
-        color: #fff;
-    }
-}
-
-.detail .detail_summary .detail_txt {
-    padding-top: pxTorem(15px);
-    padding-bottom: pxTorem(15px);
-    font-size: pxTorem(13px);
-    color: #666;
-    line-height: pxTorem(18px);
-}
-
-.detail_end {
-    height: pxTorem(40px);
-    line-height: pxTorem(40px);
-    font-size: pxTorem(13px);
-    color: #999;
-    text-align: center;
-    border-top: 1px solid #ccc;
-}
-
-.detail_other {
-    @include box_style();
-    h3 {
-        @include list_header();
-        border: none;
-        padding-left: pxTorem(10px);
-        color: $gray-color;
-    }
-    .detail_inner {
-        @include list_content();
-    }
-    h4 {
-        @include list_footer()
-    }
-}
-
-.detail_other .detail_inner dl {
-    dt,
-    dd {
-        width: 2.7rem;
-    }
-}
-
-.detail_message {
-    @include box_style();
-    margin-bottom: 0;
-    h3,
-    p {
-        width: 100%;
-        padding-left: pxTorem(10px);
-        height: pxTorem(40px);
-        line-height: pxTorem(40px);
-        font-size: pxTorem(16px);
-        color: $gray-color;
-    }
-    p {
-        height: pxTorem(50px);
-    }
-}
-
+@import "_detail.scss";
 //详情页-------------结束
+// 
 //阅读页-------------开始
-.read {
-    width: 100%;
-    background: darkcyan;
-    padding: 0 5%;
-    position: relative;
-    font-size: pxTorem(15px);
-    .read_p {
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        padding-top: pxTorem(10px);
-        // padding-top: pxTorem(15px);
-        h3 {
-            width: 100%;
-            border-bottom: 1px solid orange;
-            font-size: pxTorem(20px);
-            color: orange;
-            padding-bottom: pxTorem(6px);
-        }
-        p {
-            // font-size: pxTorem(15px);
-            font-family: "幼圆";
-            text-indent: 2em;
-            margin: pxTorem(5px) 0;
-        }
-    }
-}
-
-.r_mark {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: none;
-}
-
-.r_head {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: black;
-    color: #fff;
-    width: 100%;
-    .tpl_lef span {
-        color: #fff;
-    }
-    .tpl_lef_icon {
-        @include bg("../image/icon-circle-back.png");
-        background-size: pxTorem(22px);
-    }
-    .tpl_rig_icon {
-        @include bg("../image/icon-more.png");
-        background-size: pxTorem(22px);
-        margin-right: pxTorem(15px);
-    }
-}
-
-.r_bot {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: black;
-    color: #fff;
-    width: 100%;
-    .r_nums {
-        display: flex;
-        justify-content: space-between;
-        height: pxTorem(40px);
-        border-bottom: 1px solid #ccc;
-        button {
-            height: 100%;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: pxTorem(14px);
-            padding: 0 20px;
-        }
-        p {
-            line-height: pxTorem(40px);
-            font-size: pxTorem(14px);
-            color: #fff;
-        }
-    }
-    .r_fot {
-        display: flex;
-        justify-content: space-around;
-        height: pxTorem(80px);
-        p {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            i {
-                width: pxTorem(35px);
-                height: pxTorem(35px);
-                background: blueviolet;
-                // margin-bottom: pxTorem(2px);
-            }
-            span {
-                font-size: pxTorem(14px);
-            }
-        }
-        p:nth-of-type(1) i {
-            @include bg("../image/icon-chapter.png");
-            background-size: pxTorem(22px);
-        }
-        p:nth-of-type(2) i {
-            @include bg("../image/icon-font.png");
-            background-size: pxTorem(22px);
-        }
-        p:nth-of-type(3) i {
-            @include bg("../image/icon-night.png");
-            background-size: pxTorem(22px);
-        }
-        p:nth-of-type(4) i {
-            @include bg("../image/icon-down.png");
-            background-size: pxTorem(22px);
-        }
-        p.font_active i {
-            @include bg("../image/icon-font-active.png");
-            background-size: pxTorem(22px);
-        }
-        p.day_active i {
-            @include bg("../image/icon-light.png");
-            background-size: pxTorem(22px);
-        }
-    }
-}
-
-//字体设置+背景设置
-.r_set {
-    position: absolute;
-    left: 0;
-    bottom: pxTorem(80px);
-    background: black;
-    width: 100%;
-    padding-top: pxTorem(10px);
-    display: none;
-    >div {
-        width: 100%;
-        height: pxTorem(50px);
-        display: flex;
-        // border: 1px solid red;
-        align-items: center;
-        >strong {
-            height: 100%;
-            width: pxTorem(80px);
-            text-align: center;
-            font-size: pxTorem(14px);
-            line-height: pxTorem(50px);
-        }
-    }
-    .r_font_size {
-        button {
-            font-size: pxTorem(13px);
-            height: pxTorem(25px);
-            width: pxTorem(90px);
-            background: none;
-            border: none;
-            border: 1px solid #ccc;
-            color: #fff;
-            border-radius: pxTorem(40px);
-            margin-right: pxTorem(10px);
-        }
-    }
-    .r_background {
-        ul {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            li {
-                width: pxTorem(28px);
-                height: pxTorem(28px);
-                margin-right: pxTorem(10px);
-                border-radius: 50%;
-                background: aqua;
-            }
-            // /* 阅读界面 */
-            // $article-bg1:#f7eee5;
-            // $article-bg2:#e9dfc7;
-            // $article-bg3:#a4a4a4;
-            // $article-bg4:#cdefce;
-            // $article-bg5:#283548;
-            // $article-bg6:#0f1410;
-            // $light-day-bg:#0f1410;
-            li:nth-of-type(1) {
-                background: $article-bg1;
-            }
-            li:nth-of-type(2) {
-                background: $article-bg2;
-            }
-            li:nth-of-type(3) {
-                background: $article-bg3;
-            }
-            li:nth-of-type(4) {
-                background: $article-bg4;
-            }
-            li:nth-of-type(5) {
-                background: $article-bg5;
-            }
-            li:nth-of-type(6) {
-                background: $article-bg6;
-            }
-            li.active {
-                border: 1px solid red;
-            }
-        }
-    }
-}
-
+@import "_ready.scss";
 //阅读页-------------结束
-#root {
-    // transform: translate(-80%);
-}
-
-//----------目录------------------------------//
-.page {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    background: #f5f5f5;
-    flex-direction: column;
-    .page_header {
-        width: 100%;
-    }
-    .page_content {
-        flex: 1;
-        width: 100%;
-        background: #fff;
-        height: 100%;
-        overflow: hidden;
-        .page_list {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-            li {
-                width: 100%;
-                height: pxTorem(50px);
-                line-height: pxTorem(50px);
-                text-align: left;
-                padding: 0 pxTorem(10px);
-                border-bottom: pxTorem(1px) solid #ccc;
-                font-size: pxTorem(16px);
-            }
-        }
-    }
-}
-
+// 
+//目录页-------------开始
+@import "_list_page.scss";
 //目录页---------结束

@@ -1,0 +1,209 @@
+//阅读页-------------开始
+.read {
+    width: 100%;
+    background: darkcyan;
+    padding: 0 5%;
+    position: relative;
+    font-size: pxTorem(15px);
+    .read_p {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        padding-top: pxTorem(10px);
+        h3 {
+            width: 100%;
+            border-bottom: 1px solid orange;
+            font-size: pxTorem(20px);
+            color: orange;
+            padding-bottom: pxTorem(6px);
+        }
+        p {
+            font-family: "幼圆";
+            text-indent: 2em;
+            margin: pxTorem(5px) 0;
+        }
+    }
+}
+
+.r_mark {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.r_head {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: black;
+    color: #fff;
+    width: 100%;
+    .tpl_lef span {
+        color: #fff;
+    }
+    .tpl_lef_icon {
+        @include bg("../image/icon-circle-back.png");
+        background-size: pxTorem(22px);
+    }
+    .tpl_rig_icon {
+        @include bg("../image/icon-more.png");
+        background-size: pxTorem(22px);
+        margin-right: pxTorem(15px);
+    }
+}
+
+.r_bot {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: black;
+    color: #fff;
+    width: 100%;
+    .r_nums {
+        display: flex;
+        justify-content: space-between;
+        height: pxTorem(40px);
+        border-bottom: 1px solid #ccc;
+        button {
+            height: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: pxTorem(14px);
+            padding: 0 20px;
+        }
+        p {
+            line-height: pxTorem(40px);
+            font-size: pxTorem(14px);
+            color: #fff;
+        }
+    }
+    .r_fot {
+        display: flex;
+        justify-content: space-around;
+        height: pxTorem(80px);
+        p {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            i {
+                width: pxTorem(35px);
+                height: pxTorem(35px);
+                background: blueviolet;
+            }
+            span {
+                font-size: pxTorem(14px);
+            }
+        }
+        p:nth-of-type(1) i {
+            @include bg("../image/icon-chapter.png");
+            background-size: pxTorem(22px);
+        }
+        p:nth-of-type(2) i {
+            @include bg("../image/icon-font.png");
+            background-size: pxTorem(22px);
+        }
+        p:nth-of-type(3) i {
+            @include bg("../image/icon-night.png");
+            background-size: pxTorem(22px);
+        }
+        p:nth-of-type(4) i {
+            @include bg("../image/icon-down.png");
+            background-size: pxTorem(22px);
+        }
+        p.font_active i {
+            @include bg("../image/icon-font-active.png");
+            background-size: pxTorem(22px);
+        }
+        p.day_active i {
+            @include bg("../image/icon-light.png");
+            background-size: pxTorem(22px);
+        }
+    }
+}
+
+//字体设置+背景设置
+.r_set {
+    position: absolute;
+    left: 0;
+    bottom: pxTorem(80px);
+    background: black;
+    width: 100%;
+    padding-top: pxTorem(10px);
+    display: none;
+    >div {
+        width: 100%;
+        height: pxTorem(50px);
+        display: flex;
+        align-items: center;
+        >strong {
+            height: 100%;
+            width: pxTorem(80px);
+            text-align: center;
+            font-size: pxTorem(14px);
+            line-height: pxTorem(50px);
+        }
+    }
+    .r_font_size {
+        button {
+            font-size: pxTorem(13px);
+            height: pxTorem(25px);
+            width: pxTorem(90px);
+            background: none;
+            border: none;
+            border: 1px solid #ccc;
+            color: #fff;
+            border-radius: pxTorem(40px);
+            margin-right: pxTorem(10px);
+        }
+    }
+    .r_background {
+        ul {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            li {
+                width: pxTorem(28px);
+                height: pxTorem(28px);
+                margin-right: pxTorem(10px);
+                border-radius: 50%;
+                background: aqua;
+            }
+            // /* 阅读界面 */
+            // $article-bg1:#f7eee5;
+            // $article-bg2:#e9dfc7;
+            // $article-bg3:#a4a4a4;
+            // $article-bg4:#cdefce;
+            // $article-bg5:#283548;
+            // $article-bg6:#0f1410;
+            // $light-day-bg:#0f1410;
+            li:nth-of-type(1) {
+                background: $article-bg1;
+            }
+            li:nth-of-type(2) {
+                background: $article-bg2;
+            }
+            li:nth-of-type(3) {
+                background: $article-bg3;
+            }
+            li:nth-of-type(4) {
+                background: $article-bg4;
+            }
+            li:nth-of-type(5) {
+                background: $article-bg5;
+            }
+            li:nth-of-type(6) {
+                background: $article-bg6;
+            }
+            li.active {
+                border: 1px solid red;
+            }
+        }
+    }
+}

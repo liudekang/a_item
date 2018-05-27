@@ -1,0 +1,38 @@
+<!-- 搜索页的基本结构 -->
+<script id="s_html" type="text/x-handlebars-template">
+    <!-- 通用的头结构 -->
+    <section class="search_head">
+        <header class="s_inner">
+            <div class="s_back_icon _icon"></div>
+            <div class="s_cont">
+                <div class="s_fdj_icon _icon"></div>
+                <input type="text" placeholder="输入书名/作者/关键字" class="s_txt">
+                <span class="s_btn">搜索</span>
+            </div>
+        </header>
+    </section>
+    <!-- 搜索框内容 -->
+    <section class="s_content">
+        <div class="s_default"> </div>
+        <div class="s_get"> </div>
+        <div class="s_err">没有相应的搜索结果！！！</div>
+    </section>
+</script>
+
+
+<!-- 渲染搜索页面默认信息 -->
+<script id="search_list" type="text/x-handlebars-template">
+    {{#each this}}<span data-id="{{id}}">{{ad_name}}</span> {{/each}}
+</script>
+<script id="s_get" type="text/x-handlebars-template">
+    {{#each this}}
+    <dl class="s_get_list">
+        <dt><img src="{{cover}}" alt=""></dt>
+        <dd>
+            <h5>{{title}}</h5>
+            <p>{{intro}}</p>
+            <h6> {{#each role}}{{this}}{{/each}}</h6>
+        </dd>
+    </dl>
+    {{/each}}
+</script>

@@ -1,0 +1,46 @@
+<!-- 渲染详情页数据 -->
+<script id="detail_list" type="text/x-handlebars-template">
+    <!-- 详情页 上面的详情 -->
+    <section class="detail_summary">
+        <div class="detail_summary_dl">
+            <dl class="detail_list">
+                <dt><img src="{{item.cover}}" alt=""></dt>
+                <dd>
+                    <h5>{{item.title}}</h5>
+                    <strong>{{item.authors}}</strong>
+                    <p>{{item.score}}个星星 {{item.score_count}}个评价</p>
+                    <p>价格：{{item.price}}</p>
+                    <p>字数：{{changge_wan word_count}}万字 {{#if item.finish}}<span>已完结</span>{{else}}<span>连载</span> {{/if}} </p>
+                </dd>
+            </dl>
+        </div>
+        <div class="detail_btns"><button class="detail_btn_read">开始阅读</button><button>下载</button></div>
+        <div class="detail_txt">{{item.content}}</div>
+        <div class="detail_end">最新：{{item.latest}} 更新于 {{data_time item.updated}}</div>
+    </section>
+    <section class="detail_labels">
+        <h3>类别标签</h3>
+        {{#each item.tags}}{{#if (d_label @index)}}
+        <b>{{this}}</b> {{/if}}{{/each}}
+    </section>
+    <section class="detail_other">
+        <h3>作者其他图书</h3>
+        <div class="detail_inner">
+            {{#each author_books}}
+            <a href="#">
+                <dl>
+                    <dt><img src="{{cover}}" alt=""></dt>
+                    <dd>
+                        <span>{{title}}</span>
+                    </dd>
+                </dl>
+            </a>
+            {{/each}}
+        </div>
+        <h4>查看全部</h4>
+    </section>
+    <section class="detail_message">
+        <h3>图书信息</h3>
+        <p>版权：{{item.rights}}</p>
+    </section>
+</script>
