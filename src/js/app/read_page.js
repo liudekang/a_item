@@ -3,16 +3,9 @@ require(["jquery", "render", "text!read_handle_tpl", "base64", "items", "jsonp",
 
     //点击返回按钮，返回页面
     $("#root").on("click", ".read .tpl_lef_icon", function() {
-        $("#root >div").each(function() {
-            if ($(this).hasClass("page")) {
-                $(this).remove();
-                var len_root_div = $("#root >div").length;
-                var root_tran = (len_root_div - 1) * 100 + "%";
-                $("#root").css({
-                    transform: `translate(-${root_tran})`
-                });
-            }
-        });
+        //  //判断上一个是不是首页
+        //  var isIndex = $("#root .login").prev().hasClass("wrap");
+
         $("#root .read").remove();
 
         var len_root_div = $("#root >div").length;
@@ -133,9 +126,8 @@ require(["jquery", "render", "text!read_handle_tpl", "base64", "items", "jsonp",
                         // 初始化页面的字体和背景
                         $("#root .read").ready(function() {
                             var f_size = (items.get("fz") || 15) + "px";
-                            var ww = f_size + "px";
-                            var pp = "balck";
-                            var obj = JSON.parse(items.get("bg") || "{col: 'darkcyan',eq: 1}");
+                            var obj = items.get("bg") || '{"col": "darkcyan","eq": 1}';
+                            obj = JSON.parse(obj);
                             var col = obj.col;
                             $(".read").css({
                                 "background": col,
@@ -183,9 +175,8 @@ require(["jquery", "render", "text!read_handle_tpl", "base64", "items", "jsonp",
                         // 初始化页面的字体和背景
                         $("#root .read").ready(function() {
                             var f_size = (items.get("fz") || 15) + "px";
-                            var ww = f_size + "px";
-                            var pp = "balck";
-                            var obj = JSON.parse(items.get("bg") || "{col: 'darkcyan',eq: 1}");
+                            var obj = items.get("bg") || '{"col": "darkcyan","eq": 1}';
+                            obj = JSON.parse(obj);
                             var col = obj.col;
                             $(".read").css({
                                 "background": col,
@@ -205,16 +196,7 @@ require(["jquery", "render", "text!read_handle_tpl", "base64", "items", "jsonp",
     //点击跳转列表页
     $("#root").on("click", ".read .r_mulu_btn", function() {
         //列表页————初始化
-        $("#root >div").each(function() {
-            if ($(this).hasClass("page")) {
-                $(this).remove();
-                var len_root_div = $("#root >div").length;
-                var root_tran = (len_root_div - 1) * 100 + "%";
-                $("#root").css({
-                    transform: `translate(-${root_tran})`
-                });
-            }
-        });
+
         var directory_html = `<div class="page">
                 <div class="page_header"></div>
                 <div class="page_content"></div>

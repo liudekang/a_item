@@ -1,5 +1,6 @@
 var gulp = require("gulp");
 var url = require("url");
+var querystring = require("querystring");
 var server = require("gulp-webserver");
 var clean = require("gulp-clean");
 var sass = require("gulp-sass");
@@ -70,6 +71,29 @@ gulp.task("server", function() {
                 }
                 if (obj.pathname.indexOf("/search") !== -1) {
                     res.end(JSON.stringify(mock(query_data.id)));
+                }
+                if (obj.pathname == "/login/user") {
+                    var arr = [];
+                    req.on("data", function(chunk) {
+                        arr.push(chunk);
+                    });
+                    req.on("end", function() {
+                        var r_obj = querystring.parse(Buffer.concat(arr).toString());
+                        if (r_obj.user && r_obj.user === "ldk") {
+                            res.end(JSON.stringify({
+                                code: 0,
+                                msg: "登录成功"
+                            }))
+                        } else {
+                            res.end(JSON.stringify({
+                                code: 1,
+                                msg: "登录失败"
+                            }))
+                        }
+                        console.log(r_obj);
+                        next();
+                    });
+                    return false;
                 }
                 next()
             }

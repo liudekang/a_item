@@ -23,21 +23,20 @@ require(["jquery", "render", "text!head_tpl", "bscroll", "text!directory_page_tp
 
     //点击跳转到阅读页
     $("#root").on("click", ".page  .page_list li", function() {
-        $("#root >div").each(function() {
-            if ($(this).hasClass("read")) {
-                $(this).remove();
-                var len_root_div = $("#root >div").length;
-                var root_tran = (len_root_div - 1) * 100 + "%";
-                $("#root").css({
-                    transform: `translate(-${root_tran})`
-                });
-            }
-        });
-        var read_page_html = `<div class="read"></div>`;
-        $("#root").append(read_page_html);
+        //判断上一个是不是阅读页
+        var isRead = $("#root .page").prev().hasClass("read");
+        console.log(isRead + "*****************");
+        if (isRead) {
+            $("#root .page").remove();
+            $("#root .read").html("");
+        } else {
+            var read_page_html = `<div class="read"></div>`;
+            $("#root").append(read_page_html);
+
+        }
         $("#root >.read").hide();
 
-        render({ title: "目录" }, $("#head_tpl"), $(".page_header"));
+        render({ title: "目录" }, $("#head_tpl"), $(".page_header"), true);
 
         var chapter_id = $(this).index() + 1;
         items.set("chapter_id", chapter_id);
@@ -65,9 +64,8 @@ require(["jquery", "render", "text!head_tpl", "bscroll", "text!directory_page_tp
                         // 初始化页面的字体和背景
                         $("#root .read").ready(function() {
                             var f_size = (items.get("fz") || 15) + "px";
-                            var ww = f_size + "px";
-                            var pp = "balck";
-                            var obj = JSON.parse(items.get("bg") || "{col: 'darkcyan',eq: 1}");
+                            var obj = items.get("bg") || '{"col": "darkcyan","eq": 1}';
+                            obj = JSON.parse(obj);
                             var col = obj.col;
                             $(".read").css({
                                 "background": col,
@@ -75,6 +73,7 @@ require(["jquery", "render", "text!head_tpl", "bscroll", "text!directory_page_tp
                             });
                             $(".read .r_background ul li").eq(obj.eq).addClass("active").siblings().removeClass("active");
                             $(".read .r_nums p span").eq(0).html(chapter_id);
+
                             $("#root >.read").show();
                         })
                     }
@@ -84,6 +83,7 @@ require(["jquery", "render", "text!head_tpl", "bscroll", "text!directory_page_tp
                 console.warn(err)
             }
         });
+
         var len_root_div = $("#root >div").length;
         var root_tran = (len_root_div - 1) * 100 + "%";
         $("#root").css({

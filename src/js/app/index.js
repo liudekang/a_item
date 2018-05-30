@@ -153,5 +153,21 @@ require(["jquery", "swiper", "bscroll", "render", "GetSlideDirection", "text!han
         $("#root").css({
             transform: `translate(-${root_tran})`
         });
+    });
+    //点击登录页面跳转
+    $(".wrap .head_icon").on("click", function() {
+        //登录页——初始化渲染
+        var login_html = `<div class="login"> </div>`;
+        $("#root").append(login_html);
+
+        render({}, $("#login_html"), $("#root .login"));
+
+
+        //位移root大盒子——根据盒子数量
+        var len_root_div = $("#root >div").length;
+        var root_tran = (len_root_div - 1) * 100 + "%";
+        $("#root").css({
+            transform: `translate(-${root_tran})`
+        });
     })
 });

@@ -22,6 +22,7 @@ require.config({
         "detail_page": "app/detail_page",
         "read_page": "app/read_page",
         "directory_page": "app/directory_page",
+        "login_page": "app/login_page",
 
         //模板
         "handle_tpl": "../page_tpl/index_handle_tpl.html",
@@ -30,6 +31,7 @@ require.config({
         "detail_list_tpl": "../page_tpl/detail_list_tpl.html",
         "directory_page_tpl": "../page_tpl/directory_page_tpl.html",
         "read_handle_tpl": "../page_tpl/read_handle_tpl.html",
+        "login_handle_tpl": "../page_tpl/login_handle_tpl.html",
     },
     shim: {
         "base64": {

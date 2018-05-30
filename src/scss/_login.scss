@@ -1,0 +1,153 @@
+//登录页-------------开始
+.login {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0 7%;
+    >div {
+        width: 100%;
+    }
+}
+
+.l_loge {
+    margin-top: pxTorem(30px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    i {
+        width: pxTorem(50px);
+        height: pxTorem(50px);
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    h3 {
+        width: 100%;
+        text-align: center;
+        font-size: pxTorem(18px);
+        margin-top: pxTorem(15px);
+    }
+}
+
+.l_enter {
+    flex: 1;
+    overflow: hidden;
+    margin-top: pxTorem(20px);
+    .l_form {
+        width: 100%;
+        p {
+            width: 100%;
+            height: pxTorem(40px);
+            border-bottom: 1px solid #ccc;
+            margin-bottom: pxTorem(10px);
+            input {
+                width: 100%;
+                overflow: hidden;
+                font-size: pxTorem(18px);
+            }
+            .l_show {
+                display: none;
+            }
+        }
+        .l_pwd_wrap {
+            position: relative;
+            span {
+                font-size: pxTorem(35px);
+                position: absolute;
+                top: 0;
+                right: 0;
+                color: #000;
+                line-height: pxTorem(40px);
+            }
+            span.pwd_show {
+                color: #ff6700;
+            }
+        }
+        button {
+            width: 100%;
+            height: pxTorem(45px);
+            margin-top: pxTorem(25px);
+            border-radius: pxTorem(7px);
+            border: none;
+            background: none;
+            background: #ff6700;
+            color: #fff;
+            font-size: pxTorem(18px);
+        }
+        button:last-of-type {
+            color: #333;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+    }
+    h5 {
+        margin-top: pxTorem(20px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: pxTorem(16px);
+        color: #666;
+        span {
+            margin: 0 pxTorem(3px);
+        }
+    }
+}
+
+.l_msg {
+    width: 100%;
+    color: red;
+    font-size: pxTorem(16px);
+}
+
+.l_else {
+    margin-top: pxTorem(40px);
+    width: 100%;
+    p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .l_else_login {
+        width: 100%;
+        height: pxTorem(1px);
+        background: #f2f2f2;
+        span {
+            font-size: pxTorem(14px);
+            color: #ccc;
+            background: #fff;
+            padding: 0 pxTorem(10px);
+        }
+    }
+    .l_else_pic {
+        margin-top: pxTorem(20px);
+        span {
+            width: pxTorem(30px);
+            height: pxTorem(30px);
+            margin: pxTorem(10px);
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.l_foot {
+    width: 100%;
+    margin-bottom: pxTorem(60px);
+    p {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: pxTorem(14px);
+        color: #ccc;
+    }
+    span.l_active {
+        color: #333;
+    }
+}
